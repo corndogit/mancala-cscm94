@@ -12,6 +12,9 @@ import java.io.IOException;
  * @author Nathan Brenton
  */
 public class MainApplication extends Application {
+    final int WINDOW_WIDTH = 800;
+    final int WINDOW_HEIGHT = 600;
+
     /**
      * Used for starting the application. Loads the relevant FXML files and renders them in a new window.
      * @param stage used internally by JavaFX on launch
@@ -19,9 +22,9 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("game-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        stage.setTitle("Mancala");
         stage.setScene(scene);
         stage.show();
     }
