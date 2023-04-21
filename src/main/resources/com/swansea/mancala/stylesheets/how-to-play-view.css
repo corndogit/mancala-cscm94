@@ -1,0 +1,18 @@
+.root {
+    -fx-background-image: none;
+    -fx-background-color: #f3f3f3;
+}
+
+.how-to-play-title {
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+}
+
+.how-to-play-subtitle {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.how-to-play-paragraph {
+    -fx-font-size: 16;
+}
