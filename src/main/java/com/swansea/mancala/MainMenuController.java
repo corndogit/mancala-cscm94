@@ -1,19 +1,14 @@
 package com.swansea.mancala;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Map;
-import java.util.Objects;
 
 public class MainMenuController {
     @FXML
@@ -54,6 +49,7 @@ public class MainMenuController {
         Stage stage = new Stage();
         FXMLLoader howToPlayScene = new FXMLLoader(MainMenuController.class.getResource("how-to-play-view.fxml"));
         Scene scene = new Scene(howToPlayScene.load(), 400, 600);
+        stage.setTitle("How to play");
         stage.setScene(scene);
         stage.show();
     }
