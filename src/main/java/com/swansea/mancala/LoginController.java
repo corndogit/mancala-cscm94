@@ -32,20 +32,28 @@ public class LoginController {
 
     /**
      * Gets the username and password provided in the login screen and allows the user to log in if they are valid.
+     * @param e the event which called this method
      */
     @FXML
-    protected void loginButtonAction() {
+    protected void loginButtonAction(ActionEvent e) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         boolean isValid = validateLoginCredentials(username, password);
         if (isValid) {
             System.out.println("Login successful");
+            MainController.loginSuccess = true;
+            ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();
         } else {
             errorMessage.setText("Invalid username or password");
         }
     }
 
+    /**
+     * Changes the login window between the login and register views.
+     * @param e the event which called this method
+     * @throws IOException if an IO error occurs
+     */
     @FXML
     protected void changeViewButtonAction(ActionEvent e) throws IOException {
         Stage stage;

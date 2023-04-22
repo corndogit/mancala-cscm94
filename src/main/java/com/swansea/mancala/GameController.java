@@ -1,19 +1,17 @@
 package com.swansea.mancala;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 /**
  * Provides functionality for the Game class.
- * @author
+ * @author Nathan Brenton
  */
 public class GameController {
-    protected String[] backgrounds = new String[]{
+    protected String[] backgrounds = new String[]{  // todo: add background customization option
             "default",
             "background-1.png"
     };
@@ -24,7 +22,11 @@ public class GameController {
      */
     public static void startGame(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("game-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene = new Scene(
+                fxmlLoader.load(),
+                MainApplication.WINDOW_WIDTH,
+                MainApplication.WINDOW_HEIGHT
+        );
         scene.getRoot().setStyle("-fx-background-image: url(assets/background-1.png);");
         stage.setScene(scene);
         stage.show();
