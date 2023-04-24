@@ -5,8 +5,29 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.BoardView">
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.BoardView">
+<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+   <children>
+      <Label fx:id="p1Score" text="Player 1: 0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerTurnLabel">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2Score" text="Player 2: 0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>
+<StackPane>
    <children>
       <HBox alignment="CENTER" prefHeight="200.0" prefWidth="460.0" style="-fx-background-color: #ad9a7a;">
          <children>
@@ -72,57 +93,57 @@
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="0">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="0">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
@@ -153,3 +174,4 @@
       </Label>
    </children>
 </StackPane>
+</VBox>
