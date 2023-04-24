@@ -17,15 +17,15 @@
       </ImageView>
       <HBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <Button fx:id="profileButton" onAction="#mainMenuButtonClick" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Profile" />
-            <Button fx:id="playGameButton" onAction="#mainMenuButtonClick" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Play game" />
-            <Button fx:id="howToPlayButton" onAction="#mainMenuButtonClick" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="How to play" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="profileButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Profile" />
+            <Button fx:id="playGameButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Play game" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="howToPlayButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="How to play" textAlignment="CENTER" wrapText="true" />
          </children>
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <Button fx:id="settingsButton" onAction="#mainMenuButtonClick" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Settings" />
-            <Button fx:id="quitButton" onAction="#mainMenuButtonClick" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Quit" />
+            <Button fx:id="settingsButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Settings" />
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Quit" />
          </children>
          <opaqueInsets>
             <Insets />
