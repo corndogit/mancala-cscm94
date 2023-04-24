@@ -32,8 +32,7 @@ public class MainView {
         stage.initModality(Modality.APPLICATION_MODAL);  // makes the main window unclickable
         stage.showAndWait();
         if (loginSuccess) {
-            System.out.println("Detected a successful login");
-            enterMainMenu(stage);
+            enterMainMenu((Stage) mainWindow.getScene().getWindow());
         }
     }
 
