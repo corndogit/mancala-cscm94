@@ -37,7 +37,7 @@ public class BoardView {
     private boolean isFinished = false;
 
     public void initialize() {
-        final int INITIAL_VALUE = 1;
+        final int INITIAL_VALUE = 4;
         for (int i = 0; i < holes.length; i++) {
             for (int j = 0; j < holes[0].length; j++) {
                 holes[i][j] = INITIAL_VALUE;
@@ -142,8 +142,6 @@ public class BoardView {
         int row = GridPane.getRowIndex(origin);
         int col = GridPane.getColumnIndex(origin);
         makeMove(row, col, playerTurn);
-        printBoard();
-        System.out.println(playerTurn + " turn");
         updateView();
     }
 
@@ -253,18 +251,5 @@ public class BoardView {
             return "tie";
         }
         return null;
-    }
-
-    public void printBoard() {
-        System.out.println("Player 2 Mancala: " + stores[1]);
-        for (int i = 0; i < 6; i++) {
-            System.out.print(holes[0][i] + " ");
-        }
-        System.out.println();
-        for (int i = 0; i < 6; i++) {
-            System.out.print(holes[1][i] + " ");
-        }
-        System.out.println();
-        System.out.println("Player 1 Mancala: " + stores[0]);
     }
 }

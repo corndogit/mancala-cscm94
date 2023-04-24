@@ -41,7 +41,6 @@ public class LoginView {
 
         boolean isValid = validateLoginCredentials(username, password);
         if (isValid) {
-            System.out.println("Login successful");
             MainView.loginSuccess = true;
             ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();
         } else {
