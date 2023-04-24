@@ -13,6 +13,7 @@ import java.io.IOException;
  * @author Nathan Brenton
  */
 public class GameController {
+    // todo: add exit button (may be able to save game before exit too?)
     protected String[] backgrounds = new String[]{  // todo: add background customization option
             "default",
             "background-1.png"
@@ -24,7 +25,6 @@ public class GameController {
      */
     public static void startGame(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("game-view.fxml"));
-        BoardController board = new BoardController();
         Scene scene = new Scene(
                 fxmlLoader.load(),
                 MainApplication.WINDOW_WIDTH,
@@ -35,8 +35,4 @@ public class GameController {
         stage.show();
     }
 
-    @FXML
-    protected void onMouseHoverHole(ActionEvent e) {
-
-    }
 }
