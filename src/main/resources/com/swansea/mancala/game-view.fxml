@@ -3,30 +3,15 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.GameController">
-   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
-      <children>
-         <Label text="Player 1: 0">
-            <font>
-               <Font name="System Bold" size="18.0" />
-            </font>
-         </Label>
-         <Label text="Player 1's turn">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label text="Player 2: 0">
-            <font>
-               <Font name="System Bold" size="18.0" />
-            </font>
-         </Label>
-      </children>
-   </HBox>
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.GameView">
 
-    <fx:include source="board-view.fxml" />
+    <fx:include fx:id="BoardView" source="board-view.fxml" />
+   <Button mnemonicParsing="false" onMouseClicked="#exitConfirmation" text="Exit">
+      <VBox.margin>
+         <Insets top="30.0" />
+      </VBox.margin>
+   </Button>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>

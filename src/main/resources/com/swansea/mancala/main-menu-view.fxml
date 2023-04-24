@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheets/menu-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuView">
+   <children>
+      <ImageView fitHeight="161.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/logo.png" />
+         </image>
+         <VBox.margin>
+            <Insets top="100.0" />
+         </VBox.margin>
+      </ImageView>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
+         <children>
+            <Button fx:id="profileButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Profile" />
+            <Button fx:id="playGameButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Play game" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="howToPlayButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="How to play" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0">
+         <children>
+            <Button fx:id="settingsButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Settings" />
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#mainMenuButtonClick" prefHeight="50.0" prefWidth="75.0" text="Quit" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
