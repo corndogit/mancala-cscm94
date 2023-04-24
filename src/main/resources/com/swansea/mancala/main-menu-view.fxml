@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheets/menu-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuController">
+<VBox id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheets/menu-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuView">
    <children>
       <ImageView fitHeight="161.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
          <image>

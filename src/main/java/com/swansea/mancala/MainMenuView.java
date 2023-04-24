@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainMenuController {
+public class MainMenuView {
     @FXML
     protected Button profileButton;
     @FXML
@@ -28,7 +28,10 @@ public class MainMenuController {
         Stage window = (Stage) buttonSource.getScene().getWindow();
 
         switch (buttonSource.getId()){
-            case "playGameButton" -> GameController.startGame(window);
+            case "playGameButton" -> {
+                GameView game = new GameView();
+                game.startGame(window);
+            }
             case "quitButton" -> quitApplication(window);
             case "howToPlayButton" -> showHowToPlay();
             default -> {
@@ -47,7 +50,7 @@ public class MainMenuController {
 
     private void showHowToPlay() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader howToPlayScene = new FXMLLoader(MainMenuController.class.getResource("how-to-play-view.fxml"));
+        FXMLLoader howToPlayScene = new FXMLLoader(MainMenuView.class.getResource("how-to-play-view.fxml"));
         Scene scene = new Scene(howToPlayScene.load(), 400, 600);
         stage.setTitle("How to play");
         stage.setScene(scene);

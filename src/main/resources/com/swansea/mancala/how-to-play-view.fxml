@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuView">
    <content>
       <VBox id="how-to-play" prefWidth="400.0" stylesheets="@stylesheets/how-to-play-view.css">
          <children>

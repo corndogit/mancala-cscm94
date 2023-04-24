@@ -2,6 +2,7 @@ package com.swansea.mancala;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
@@ -12,7 +13,9 @@ import java.net.URL;
  * Provides functionality for the Board class.
  * @author
  */
-public class BoardController {
+public class BoardView {
+    @FXML
+    public Parent BoardView;
     @FXML
     protected ImageView p1StoreView;
     @FXML
@@ -58,9 +61,9 @@ public class BoardController {
         URL url;
 
         if (value < 10){
-            url = BoardController.class.getResource(String.format("assets/board/stone-%d.png", value));
+            url = com.swansea.mancala.BoardView.class.getResource(String.format("assets/board/stone-%d.png", value));
         } else {
-            url = BoardController.class.getResource("assets/board/stone-10plus.png");
+            url = com.swansea.mancala.BoardView.class.getResource("assets/board/stone-10plus.png");
         }
 
         assert url != null;  // exception thrown if URL does not point to a file
@@ -99,7 +102,7 @@ public class BoardController {
         updateView();
     }
 
-    private void printBoard() {
+    public void printBoard() {
         System.out.println("Player 2 Mancala: " + stores[1]);
         for (int i = 5; i >= 0; i--) {
             System.out.print(holes[0][i] + " ");

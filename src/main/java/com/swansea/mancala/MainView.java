@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainController {
+public class MainView {
     static boolean loginSuccess = false;
     @FXML
     protected VBox mainWindow;
@@ -20,11 +20,11 @@ public class MainController {
      */
     @FXML
     protected void onLoginButtonClick() throws IOException {
-        FXMLLoader loginViewLoader = new FXMLLoader(MainController.class.getResource("login-view.fxml"));
+        FXMLLoader loginViewLoader = new FXMLLoader(MainView.class.getResource("login-view.fxml"));
         Scene scene = new Scene(
                 loginViewLoader.load(),
-                LoginController.LOGIN_WINDOW_WIDTH,
-                LoginController.LOGIN_WINDOW_HEIGHT
+                LoginView.LOGIN_WINDOW_WIDTH,
+                LoginView.LOGIN_WINDOW_HEIGHT
         );
         Stage stage = new Stage();
         stage.setTitle("Login");
@@ -38,7 +38,7 @@ public class MainController {
     }
 
     private void enterMainMenu() throws IOException {
-        FXMLLoader mainMenuLoader = new FXMLLoader(MainController.class.getResource("main-menu-view.fxml"));
+        FXMLLoader mainMenuLoader = new FXMLLoader(MainView.class.getResource("main-menu-view.fxml"));
         Scene scene = new Scene(
                 mainMenuLoader.load(),
                 MainApplication.WINDOW_WIDTH,
