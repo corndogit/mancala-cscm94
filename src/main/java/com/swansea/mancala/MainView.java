@@ -33,19 +33,18 @@ public class MainView {
         stage.showAndWait();
         if (loginSuccess) {
             System.out.println("Detected a successful login");
-            enterMainMenu();
+            enterMainMenu(stage);
         }
     }
 
-    private void enterMainMenu() throws IOException {
+    public void enterMainMenu(Stage mainWindow) throws IOException {
         FXMLLoader mainMenuLoader = new FXMLLoader(MainView.class.getResource("main-menu-view.fxml"));
         Scene scene = new Scene(
                 mainMenuLoader.load(),
                 MainApplication.WINDOW_WIDTH,
                 MainApplication.WINDOW_HEIGHT
         );
-        Stage stage = (Stage) mainWindow.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        mainWindow.setScene(scene);
+        mainWindow.show();
     }
 }

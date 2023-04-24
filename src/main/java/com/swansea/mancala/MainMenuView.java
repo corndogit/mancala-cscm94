@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class MainMenuView {
@@ -36,7 +35,8 @@ public class MainMenuView {
             case "howToPlayButton" -> showHowToPlay();
             default -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Coming soon!");
+                alert.setTitle("Under construction");
+                alert.setHeaderText("Coming soon!");
                 alert.setContentText("This feature is yet to be implemented.");
                 alert.showAndWait();
             }
