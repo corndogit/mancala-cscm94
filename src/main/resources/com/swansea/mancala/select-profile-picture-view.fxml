@@ -19,39 +19,39 @@
           <RowConstraints minHeight="100.0" prefHeight="160.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="160.0" fitWidth="160.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <ImageView id="default" fitHeight="160.0" fitWidth="160.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
                <image>
                   <Image url="@assets/profile_pictures/default.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <ImageView id="01" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
                <image>
                   <Image url="@assets/profile_pictures/01.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <ImageView id="02" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
                <image>
                   <Image url="@assets/profile_pictures/02.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <ImageView id="03" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
                <image>
                   <Image url="@assets/profile_pictures/03.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView id="04" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
                   <Image url="@assets/profile_pictures/04.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView id="05" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <image>
                   <Image url="@assets/profile_pictures/05.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <ImageView id="06" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
                <image>
                   <Image url="@assets/profile_pictures/06.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView id="07" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <image>
                   <Image url="@assets/profile_pictures/07.png" />
                </image></ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView id="08" fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
                   <Image url="@assets/profile_pictures/08.png" />
                </image></ImageView>

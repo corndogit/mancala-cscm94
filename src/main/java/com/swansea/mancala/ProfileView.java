@@ -45,18 +45,12 @@ public class ProfileView {
     @FXML
     protected void setProfilePicture() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("select-profile-picture-view.fxml"));
-        SelectProfilePictureView childController = fxmlLoader.getController();
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Change profile picture");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        if (childController.getSelectionPath() == null) {
-            return;
-        }
-        String path = childController.getSelectionPath();
-        // todo: run query to update user's profile picture
     }
 
     /**
@@ -65,6 +59,8 @@ public class ProfileView {
      */
     @FXML
     protected void closeWindow(MouseEvent event) {
-        ((Stage) event.getSource()).close();
+        Button buttonSource = ((Button) event.getSource());
+        Stage window = (Stage) buttonSource.getScene().getWindow();
+        window.close();
     }
 }

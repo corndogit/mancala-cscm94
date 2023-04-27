@@ -1,27 +1,29 @@
 package com.swansea.mancala;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SelectProfilePictureView {
     @FXML
-    protected VBox root;
-    private String selectionPath;
+    protected Parent root;
+    private String selection;
 
     /**
      * Confirms the selection and updates the relevant database entry if necessary
      */
     @FXML
-    protected void confirmSelection() {
-        if (selectionPath != null) {
+    protected void confirmSelection(MouseEvent event) {
+        if (selection != null) {
+            System.out.println(selection + " selected");
             // todo: send edit query to database and change profile picture path
         }
-
-        // close the window
-        ((Stage) root.getScene().getWindow()).close();
+        Button buttonSource = ((Button) event.getSource());
+        Stage window = (Stage) buttonSource.getScene().getWindow();
+        window.close();
     }
 
     /**
@@ -31,10 +33,6 @@ public class SelectProfilePictureView {
     @FXML
     protected void selectPicture(MouseEvent event) {
         ImageView source = (ImageView) event.getSource();
-        selectionPath = source.getImage().getUrl();
-    }
-
-    public String getSelectionPath() {
-        return selectionPath;
+        selection = String.format("assets/%s.png", source.getId());
     }
 }
