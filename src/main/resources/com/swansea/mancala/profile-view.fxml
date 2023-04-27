@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.ProfileView">
+   <children>
+      <HBox layoutX="21.0" layoutY="20.0" spacing="40.0">
+         <children>
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <ImageView fx:id="profilePicture" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/profile_pictures/default.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="changeProfilePicture" mnemonicParsing="false" onMouseClicked="#setProfilePicture" text="Change picture" />
+                  <Button mnemonicParsing="false" onMouseClicked="#closeWindow" text="Close" />
+               </children>
+            </VBox>
+            <VBox spacing="10.0">
+               <children>
+                  <Label fx:id="playerFullName" text="Full Name">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerUsername" layoutX="10.0" layoutY="10.0" text="Username">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateJoined" text="Date joined: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateLastLogin" text="Date last logged in:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gamesPlayed" layoutX="10.0" layoutY="85.0" text="Games played:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="winRate" layoutX="10.0" layoutY="115.0" text="Win rate:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

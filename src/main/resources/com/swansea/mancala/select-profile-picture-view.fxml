@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.SelectProfilePictureView">
+   <children>
+      <GridPane gridLinesVisible="true">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="160.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="100.0" prefHeight="160.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="100.0" prefHeight="160.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="100.0" prefHeight="160.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="160.0" fitWidth="160.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+               <image>
+                  <Image url="@assets/profile_pictures/default.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+               <image>
+                  <Image url="@assets/profile_pictures/01.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+               <image>
+                  <Image url="@assets/profile_pictures/02.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@assets/profile_pictures/03.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@assets/profile_pictures/04.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@assets/profile_pictures/05.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@assets/profile_pictures/06.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@assets/profile_pictures/07.png" />
+               </image></ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@assets/profile_pictures/08.png" />
+               </image></ImageView>
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" onMouseClicked="#confirmSelection" text="Confirm" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
