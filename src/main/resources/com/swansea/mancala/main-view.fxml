@@ -5,14 +5,14 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="mainWindow" alignment="CENTER" spacing="20.0" style="-fx-background-color: tan;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainView">
+<VBox fx:id="mainWindow" alignment="CENTER" spacing="50.0" stylesheets="@stylesheets/menu-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainView">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
     </padding>
-   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="161.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@assets/logo.png" />
       </image>
    </ImageView>
-    <Button onAction="#onLoginButtonClick" text="Log in" />
+    <Button minHeight="60.0" minWidth="120.0" onAction="#onLoginButtonClick" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #dacc3e; -fx-font-weight: bolder; -fx-font-size: 16.0; -fx-border-color: BLACK; -fx-border-width: 2.0; -fx-border-radius: 15.0; -fx-background-radius: 15.0;" text="Log in" />
 </VBox>

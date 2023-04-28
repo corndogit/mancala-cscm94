@@ -18,6 +18,8 @@ public class MainMenuView {
     @FXML
     protected Button howToPlayButton;
     @FXML
+    protected Button leaderboardButton;
+    @FXML
     protected Button settingsButton;
     @FXML
     protected Button quitButton;
@@ -35,6 +37,7 @@ public class MainMenuView {
             case "quitButton" -> quitApplication(window);
             case "howToPlayButton" -> showInNewWindow("How to play", "how-to-play-view.fxml");
             case "profileButton" -> showInNewWindow("Profile", "profile-view.fxml");
+            case "leaderboardButton" -> showInNewWindow("Leadboard", "leaderboard-view.fxml");
             default -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Under construction");
