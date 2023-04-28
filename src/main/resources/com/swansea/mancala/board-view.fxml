@@ -10,7 +10,7 @@
 <VBox stylesheets="@stylesheets/game-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.BoardView">
 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
    <children>
-      <Label fx:id="p1Score" style="-fx-background-color: white; -fx-background-radius: 5;" text="Player 1: 0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="p1Score" style="-fx-background-color: #dacc3e; -fx-font-weight: bolder; -fx-border-color: BLACK; -fx-border-width: 2.0; -fx-border-radius: 15.0; -fx-background-radius: 15.0;" text="Player 1: 0" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -21,9 +21,9 @@
                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
       </Label>
-      <Label fx:id="playerTurnLabel" style="-fx-background-color: white; -fx-background-radius: 5;" text="Player 1's turn" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="playerTurnLabel" style="-fx-background-color: #dacc3e; -fx-font-weight: bolder; -fx-border-color: BLACK; -fx-border-width: 2.0; -fx-border-radius: 15.0; -fx-background-radius: 15.0;" text="Player 1's turn" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font size="24.0" />
          </font>
             <HBox.margin>
                <Insets />
@@ -32,7 +32,7 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
       </Label>
-      <Label fx:id="p2Score" style="-fx-background-color: white; -fx-background-radius: 5;" text="Player 2: 0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="p2Score" style="-fx-background-color: #dacc3e; -fx-font-weight: bolder; -fx-border-color: BLACK; -fx-border-width: 2.0; -fx-border-radius: 15.0; -fx-background-radius: 15.0;" text="Player 2: 0" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -66,102 +66,138 @@
                <children>
                   <GridPane alignment="CENTER">
                      <columnConstraints>
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                        <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" />
+                        <RowConstraints minHeight="75.0" prefHeight="75.0" />
+                        <RowConstraints minHeight="75.0" prefHeight="75.0" />
                      </rowConstraints>
                      <children>
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Circle fill="#8b7655" radius="24.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
+                        <Circle fill="#8b7655" radius="30.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <GridPane.margin>
+                                 <Insets />
+                              </GridPane.margin></Circle>
                      </children>
                   </GridPane>
                   <GridPane fx:id="stones" alignment="CENTER">
                     <columnConstraints>
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
-                      <ColumnConstraints minWidth="50.0" prefWidth="50.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                      <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="50.0" prefHeight="50.0" />
-                      <RowConstraints minHeight="50.0" prefHeight="50.0" />
+                      <RowConstraints minHeight="75.0" prefHeight="75.0" />
+                      <RowConstraints minHeight="75.0" prefHeight="75.0" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onMouseClickHole" onMouseEntered="#onMouseHoverHole" onMouseExited="#onMouseHoverHoleExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@assets/board/stone-4.png" />
                            </image>
