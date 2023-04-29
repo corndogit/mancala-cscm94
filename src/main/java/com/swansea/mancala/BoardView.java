@@ -226,8 +226,8 @@ public class BoardView {
     }
 
     /**
-     * Checks if either of the sides of the board are empty, giving the remaining pieces to whichever player made
-     * the last move.
+     * Checks if either of the sides of the board are empty, giving the remaining pieces to whichever player still
+     * has stones on their side of the board.
      * @return the name of the player with no stones left
      */
     private String checkForWin() {
@@ -236,9 +236,9 @@ public class BoardView {
 
         if (topRowSum == 0 || bottomRowSum == 0) {
             if (topRowSum == 0) {
-                stores[0] += bottomRowSum;
+                stores[1] += bottomRowSum;
             } else {
-                stores[1] += topRowSum;
+                stores[0] += topRowSum;
             }
 
             updateView();
