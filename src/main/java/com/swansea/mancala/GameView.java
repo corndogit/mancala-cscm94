@@ -23,11 +23,6 @@ public class GameView {
     @FXML
     protected BoardView BoardViewController;  // todo: create listener for BoardView win state
 
-    protected String[] backgrounds = new String[]{  // todo: add background customization option
-            "default",
-            "background-1.png"
-    };
-
     /**
      * Creates a new game instance and opens it in the current window.
      * @throws IOException if an IO error occurs
