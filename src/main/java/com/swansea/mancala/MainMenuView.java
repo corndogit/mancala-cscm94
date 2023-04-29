@@ -24,6 +24,10 @@ public class MainMenuView {
     @FXML
     protected Button quitButton;
 
+    /**
+     * Determines which button on the main menu was clicked and calls the appropriate method.
+     * @param e event that was fired
+     */
     @FXML
     protected void mainMenuButtonClick(ActionEvent e) throws IOException {
         Button buttonSource = ((Button) e.getSource());
@@ -48,11 +52,20 @@ public class MainMenuView {
         }
     }
 
+    /**
+     * Closes the provided stage.
+     * @param mainWindow The stage that is closed
+     */
     private void quitApplication(Stage mainWindow) {
         // todo: maybe add a confirmation prompt here
         mainWindow.close();
     }
 
+    /**
+     * Retrieves an FXML view and opens it in a new window.
+     * @param title New window title
+     * @param resourcePath Path to the FXML view
+     */
     private void showInNewWindow(String title, String resourcePath) throws IOException {
         Stage stage = new Stage();
         FXMLLoader howToPlayScene = new FXMLLoader(getClass().getResource(resourcePath));

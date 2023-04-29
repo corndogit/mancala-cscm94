@@ -55,7 +55,7 @@ public class ProfileView {
 
     /**
      * Closes the current window.
-     * @param event Source of the event
+     * @param event Event that was fired
      */
     @FXML
     protected void closeWindow(MouseEvent event) {

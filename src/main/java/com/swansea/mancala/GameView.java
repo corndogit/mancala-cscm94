@@ -25,7 +25,6 @@ public class GameView {
 
     /**
      * Creates a new game instance and opens it in the current window.
-     * @throws IOException if an IO error occurs
      */
     public void startGame(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("game-view.fxml"));
@@ -42,7 +41,6 @@ public class GameView {
     /**
      * Presents the user with a confirmation box upon clicking the "exit game" button.
      * @param e Event fired by the button
-     * @throws IOException if an IO error occurs upon creating the alert
      */
     @FXML
     public void exitConfirmation(MouseEvent e) throws IOException {

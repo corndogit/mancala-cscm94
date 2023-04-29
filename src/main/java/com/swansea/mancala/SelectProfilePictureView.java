@@ -28,7 +28,7 @@ public class SelectProfilePictureView {
 
     /**
      * Gets the path of the selected image.
-     * @param event Source of the event
+     * @param event Event that was fired
      */
     @FXML
     protected void selectPicture(MouseEvent event) {
