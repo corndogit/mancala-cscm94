@@ -1,6 +1,10 @@
-HBox {
-    -fx-background-image: url(../assets/board/background.png);
+.root {
+    -fx-background-image: url("../assets/background-dim.png");
+}
+
+#board {
+    -fx-background-image: url("../assets/board/background.jpg");
     -fx-background-repeat: stretch;
-    -fx-background-size: 460 200;
+    -fx-background-size: cover;
     -fx-background-position: center center;
 }

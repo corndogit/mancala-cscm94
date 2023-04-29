@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 
 public class MainMenuView {
     @FXML
@@ -16,6 +17,8 @@ public class MainMenuView {
     protected Button playGameButton;
     @FXML
     protected Button howToPlayButton;
+    @FXML
+    protected Button leaderboardButton;
     @FXML
     protected Button settingsButton;
     @FXML
@@ -32,7 +35,9 @@ public class MainMenuView {
                 game.startGame(window);
             }
             case "quitButton" -> quitApplication(window);
-            case "howToPlayButton" -> showHowToPlay();
+            case "howToPlayButton" -> showInNewWindow("How to play", "how-to-play-view.fxml");
+            case "profileButton" -> showInNewWindow("Profile", "profile-view.fxml");
+            case "leaderboardButton" -> showInNewWindow("Leadboard", "leaderboard-view.fxml");
             default -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Under construction");
@@ -48,11 +53,11 @@ public class MainMenuView {
         mainWindow.close();
     }
 
-    private void showHowToPlay() throws IOException {
+    private void showInNewWindow(String title, String resourcePath) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader howToPlayScene = new FXMLLoader(MainMenuView.class.getResource("how-to-play-view.fxml"));
-        Scene scene = new Scene(howToPlayScene.load(), 400, 600);
-        stage.setTitle("How to play");
+        FXMLLoader howToPlayScene = new FXMLLoader(getClass().getResource(resourcePath));
+        Scene scene = new Scene(howToPlayScene.load());
+        stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
     }
