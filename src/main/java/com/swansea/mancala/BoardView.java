@@ -11,7 +11,8 @@ import java.net.URL;
 import java.util.Arrays;
 
 /**
- * Provides functionality for the Board class.
+ * Provides functionality for the Board component of the game, and provides methods for moving the pieces around the
+ * board, selecting the next player's turn and determining the win state.
  * @author Nathan Brenton
  */
 public class BoardView {
@@ -36,6 +37,9 @@ public class BoardView {
     private final int[] stores = new int[2];
     private boolean isFinished = false;
 
+    /**
+     * Sets up the game once a Game is instantiated
+     */
     public void initialize() {
         final int INITIAL_VALUE = 4;
         for (int i = 0; i < holes.length; i++) {
