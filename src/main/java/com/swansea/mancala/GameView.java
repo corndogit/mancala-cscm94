@@ -21,7 +21,14 @@ public class GameView {
     @FXML
     protected Parent BoardView;
     @FXML
-    protected BoardView BoardViewController;  // todo: create listener for BoardView win state
+    protected BoardView BoardViewController;
+
+    /**
+     * Called when the game is instantiated
+     */
+    public void initialize() {
+        BoardViewController.setGameController(this);  // pass a reference for this class to the board
+    }
 
     /**
      * Creates a new game instance and opens it in the current window.
@@ -35,6 +42,11 @@ public class GameView {
         );
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void storeResultInDB(String[] players, int[] scores) {
+        System.out.println("Storing the results in database...");
+        // todo: add logic here when possible
     }
 
 

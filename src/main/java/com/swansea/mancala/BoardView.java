@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
 import java.net.URL;
 import java.util.Arrays;
 
@@ -36,6 +38,7 @@ public class BoardView {
     private final int[][] holes = new int[2][6];
     private final int[] stores = new int[2];
     private boolean isFinished = false;
+    private GameView gameController;
 
     /**
      * Sets up the game once a Game is instantiated
@@ -52,16 +55,6 @@ public class BoardView {
     }
 
     /**
-     * Gets a hole value
-     * @param row row index
-     * @param col column index
-     * @return value stored at board position [row][col]
-     */
-    private int getHoleValue(int row, int col) {
-        return holes[row][col];
-    }
-
-    /**
      * Refreshes the UI, updating the view of holes and stores
      */
     private void updateView() {
@@ -75,7 +68,7 @@ public class BoardView {
         for (Node hole: stones.getChildren()) {
             int row = GridPane.getRowIndex(hole);
             int col = GridPane.getColumnIndex(hole);
-            Image stoneImage = loadStoneImage(getHoleValue(row, col));
+            Image stoneImage = loadStoneImage(holes[row][col]);
             ((ImageView) hole).setImage(stoneImage);
         }
     }
@@ -112,7 +105,7 @@ public class BoardView {
         if (origin.getParent() instanceof GridPane) {  // hovered image is a hole
             int row = GridPane.getRowIndex(origin);
             int col = GridPane.getColumnIndex(origin);
-            hoverText.setText(String.format(textPattern, getHoleValue(row, col)));
+            hoverText.setText(String.format(textPattern, holes[row][col]));
         } else {  // hovered image is a store
             int value;
             if (origin.getId().equals("p1StoreView")) {
@@ -210,6 +203,7 @@ public class BoardView {
                 playerTurnLabel.setText(winner + " wins!");
             }
             isFinished = true;
+            gameController.storeResultInDB(players, stores);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Winner!");
             alert.setHeaderText(winner + " wins the game!");
@@ -255,5 +249,9 @@ public class BoardView {
             return "tie";
         }
         return null;
+    }
+
+    public void setGameController(GameView gameController) {
+        this.gameController = gameController;
     }
 }
