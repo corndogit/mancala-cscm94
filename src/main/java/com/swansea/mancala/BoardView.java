@@ -12,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import java.net.URL;
 import java.util.Arrays;
 
+import javafx.scene.control.Alert.AlertType;
+
 /**
  * Provides functionality for the Board component of the game, and provides methods for moving the pieces around the
  * board, selecting the next player's turn and determining the win state.
@@ -204,10 +206,12 @@ public class BoardView {
             }
             isFinished = true;
             gameController.storeResultInDB(players, stores);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Winner!");
-            alert.setHeaderText(winner + " wins the game!");
-            alert.setContentText("Click exit to return to the main menu.");
+            Alert alert = AlertFactory.createAlert(
+                    AlertType.INFORMATION,
+                    "Winner!",
+                    String.format("%s wins the game!", winner),
+                    "Click exit to return to the main menu."
+            );
             alert.showAndWait();
             return;
         }

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
@@ -57,11 +58,13 @@ public class GameView {
     @FXML
     public void exitConfirmation(MouseEvent e) throws IOException {
         Stage mainWindow = (Stage) ((Button) e.getSource()).getScene().getWindow();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Exit game");
-        alert.setHeaderText("Exit game");
-        alert.setContentText("Are you sure you want to exit?");
-        Optional<ButtonType>option = alert.showAndWait();
+        Alert alert = AlertFactory.createAlert(
+                AlertType.CONFIRMATION,
+                "Exit game",
+                "Exit game",
+                "Are you sure you want to exit?"
+        );
+        Optional<ButtonType> option = alert.showAndWait();
         if (option.isPresent()) {
             if (ButtonType.OK.equals(option.get())) {
                 MainView mainMenu = new MainView();
