@@ -3,11 +3,15 @@ package com.swansea.mancala;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SelectProfilePictureView {
+    @FXML
+    protected Label selectIndicator;
     @FXML
     protected Parent root;
     private String selection;
@@ -34,5 +38,7 @@ public class SelectProfilePictureView {
     protected void selectPicture(MouseEvent event) {
         ImageView source = (ImageView) event.getSource();
         selection = String.format("assets/%s.png", source.getId());
+        selectIndicator.setText(selection + " selected.");
+        selectIndicator.setTextFill(Color.GREEN);
     }
 }
