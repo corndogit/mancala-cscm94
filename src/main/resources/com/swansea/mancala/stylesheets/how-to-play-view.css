@@ -1,6 +1,5 @@
-.root {
-    -fx-background-image: none;
-    -fx-background-color: #f3f3f3;
+#how-to-play {
+    -fx-background-color: #baf0ff;
 }
 
 .how-to-play-title {

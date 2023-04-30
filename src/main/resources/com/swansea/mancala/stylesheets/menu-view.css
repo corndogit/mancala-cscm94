@@ -1,7 +1,10 @@
 .root {
+    -fx-background-color: #baf0ff;
+}
+
+#main-menu {
     -fx-background-image: url("../assets/background.png");
     -fx-background-repeat: no-repeat;
-    -fx-background-color: slategrey;
     -fx-background-size: 150%;
     -fx-background-position: center center;
 }
