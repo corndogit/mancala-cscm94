@@ -105,11 +105,11 @@ public class DatabaseConnector {
         throw new SQLException("No user found with username '%s'", username);
     }
 
-    public ArrayList<User> displayUser() throws SQLException {
+    public ArrayList<User> displayAllUsers() throws SQLException {
         ArrayList<User> list = new ArrayList<>();
-        String query = Query.getUser;
+        String query = Query.getAllUsers;
         Statement st = connection.createStatement();
-        System.out.println("\n st = "+st);
+        System.out.println("\nst = "+st);
         ResultSet resultSet = st.executeQuery(query);
         while(resultSet.next()){
             User user = new User(
@@ -118,7 +118,7 @@ public class DatabaseConnector {
                     resultSet.getInt("gamesPlayed"),
                     resultSet.getInt("gamesWon"),
                     resultSet.getString("userName"),
-                    LocalDate.now());
+                    resultSet.getDate("loginDate").toLocalDate());
             list.add(user);
         }
         st.close();

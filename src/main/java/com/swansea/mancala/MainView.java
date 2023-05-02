@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainView {
-    static boolean loginSuccess = false;
+    static User loggedInUser;
     @FXML
     protected VBox mainWindow;
 
@@ -31,7 +31,7 @@ public class MainView {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);  // makes the main window unclickable
         stage.showAndWait();
-        if (loginSuccess) {
+        if (loggedInUser != null) {
             enterMainMenu((Stage) mainWindow.getScene().getWindow());
         }
     }

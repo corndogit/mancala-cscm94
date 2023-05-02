@@ -10,6 +10,7 @@ public class Query {
             FROM user
             WHERE username = ?;
             """;
+    static String getAllUsers = "SELECT id, firstName, lastName, gamesPlayed, gamesWon, userName, loginDate, winPc FROM user";
     static String displayLeaderboard = "SELECT PlayerRank, userName, winPc FROM leaderBoard ORDER BY winPc DESC";
     static String leaderBoard1 = """
             INSERT IGNORE INTO leaderBoard (PlayerRank, userName, winPc)

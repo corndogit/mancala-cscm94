@@ -1,7 +1,7 @@
 package com.swansea.mancala;
 
 public enum DBLogin {
-    URL("jdbc:mysql://localhost:3306/User"),
+    URL("jdbc:mysql://localhost:3306/Mancala"),
     USERNAME("root"),
     PASSWORD("pass");
 

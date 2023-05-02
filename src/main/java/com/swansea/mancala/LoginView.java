@@ -49,7 +49,6 @@ public class LoginView {
             DatabaseConnector db = DatabaseConnector.create();
             try {
                 MainView.loggedInUser = db.getUserByUsername(username);
-                MainView.loginSuccess = true;
             } catch (SQLException ex) {
                 System.out.println(ex.getSQLState());
             }
