@@ -38,7 +38,7 @@ public class DatabaseConnector {
 
         System.out.println("\nps = "+pst);
         System.out.println(user);
-        pst.executeUpdate();  // todo: check user exists before updating table
+        pst.executeUpdate();
         pst.close();
     }
     public void createLeaderBoard() throws SQLException{
@@ -64,6 +64,14 @@ public class DatabaseConnector {
             }
         }
         return false;
+    }
+
+    public void updateProfilePicture(String filename, User user) throws SQLException{
+        String query = Query.updateProfilePicture;
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, filename);
+        pst.setString(2, user.getUserName());
+        pst.executeUpdate();
     }
 
     public boolean userExistsInDatabase(String username) throws SQLException {
@@ -99,8 +107,10 @@ public class DatabaseConnector {
             int gamesPlayed = resultSet.getInt("gamesPlayed");
             int gamesWon = resultSet.getInt("gamesWon");
             String userName = resultSet.getString("userName");
+            String profilePicture = resultSet.getString("profilePicture");
             LocalDate loginDate = resultSet.getDate("loginDate").toLocalDate();
-            return new User(firstName,lastName,gamesPlayed,gamesWon,userName,loginDate);
+
+            return new User(firstName, lastName, gamesPlayed, gamesWon, userName, profilePicture, loginDate);
         }
         throw new SQLException("No user found with username '%s'", username);
     }
@@ -118,6 +128,7 @@ public class DatabaseConnector {
                     resultSet.getInt("gamesPlayed"),
                     resultSet.getInt("gamesWon"),
                     resultSet.getString("userName"),
+                    resultSet.getString("profilePicture"),
                     resultSet.getDate("loginDate").toLocalDate());
             list.add(user);
         }

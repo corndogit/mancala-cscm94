@@ -8,10 +8,10 @@ public class User {
     private String lastName;
     private int noOfGamesPlayed;
     private int noOfGamesWon;
+    private String profilePicture;
     private Date loginDate;
     private String userName;
     private String password;
-    private float winPc;
 
     public User(String firstName, String lastName, int noOfGamesPlayed, int noOfGamesWon, String userName,String password){
         this.firstName = firstName;
@@ -22,12 +22,14 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstName, String lastName, int noOfGamesPlayed, int noOfGamesWon, String userName,LocalDate loginDate){
+    public User(String firstName, String lastName, int noOfGamesPlayed, int noOfGamesWon,
+                String userName, String profilePicture, LocalDate loginDate){
         this.firstName = firstName;
         this.lastName = lastName;
         this.noOfGamesPlayed = noOfGamesPlayed;
         this.noOfGamesWon = noOfGamesWon;
         this.userName = userName;
+        this.profilePicture = profilePicture;
         this.loginDate = Date.valueOf(loginDate);
     }
 
@@ -79,11 +81,17 @@ public class User {
         if (noOfGamesPlayed < 1) {
             return 0;
         }
-        winPc = ((float)noOfGamesWon/(float)noOfGamesPlayed)*100;
-        return winPc;
+        return ((float) noOfGamesWon / (float) noOfGamesPlayed) * 100;
     }
     public String toString(){
         return " first name : "+firstName+", last name: "+lastName+", Games played: "+noOfGamesPlayed+" Games Won "+noOfGamesWon+" Date of logged in: "+loginDate;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String filename) {
+        this.profilePicture = filename;
+    }
 }

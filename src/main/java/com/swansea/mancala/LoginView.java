@@ -53,7 +53,7 @@ public class LoginView {
             try {
                 MainView.loggedInUser = db.getUserByUsername(username);
             } catch (SQLException ex) {
-                System.out.println(ex.getSQLState());
+                ex.printStackTrace();
             }
             ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();  // close window
         } else {

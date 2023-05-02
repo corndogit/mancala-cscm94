@@ -2,11 +2,11 @@ package com.swansea.mancala;
 
 public class Query {
     static String insert = """
-            INSERT INTO user (firstName, lastName, gamesPlayed, gamesWon, userName,password, loginDate,winPc)
+            INSERT INTO user (firstName, lastName, gamesPlayed, gamesWon, userName,password, loginDate, winPc)
             VALUES(?,?,?,?,?,?,?,?)
             """;
     static String getUser = """
-            SELECT id, firstName, lastName, gamesPlayed, gamesWon, userName, loginDate, winPc
+            SELECT id, firstName, lastName, gamesPlayed, gamesWon, userName, loginDate, profilePicture
             FROM user
             WHERE username = ?;
             """;
@@ -29,4 +29,5 @@ public class Query {
             """;
     static String validateLogin = "SELECT userName, password FROM User WHERE userName = ? AND password = ?";
     static String usernameExists = "SELECT userName FROM User WHERE userName = ?";
+    static String updateProfilePicture = "UPDATE User SET profilePicture = ? WHERE userName = ?";
 }

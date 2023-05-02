@@ -2,12 +2,15 @@ package com.swansea.mancala;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class SelectProfilePictureView {
     @FXML
@@ -22,8 +25,14 @@ public class SelectProfilePictureView {
     @FXML
     protected void confirmSelection(MouseEvent event) {
         if (selection != null) {
-            System.out.println(selection + " selected");
-            // todo: send edit query to database and change profile picture path
+            try {
+                DatabaseConnector db = DatabaseConnector.create();
+                db.updateProfilePicture(selection, MainView.loggedInUser);
+                MainView.loggedInUser.setProfilePicture(selection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                AlertFactory.createAlert(AlertType.ERROR, "Error", "Database error", e.getMessage()).showAndWait();
+            }
         }
         Button buttonSource = ((Button) event.getSource());
         Stage window = (Stage) buttonSource.getScene().getWindow();
@@ -37,7 +46,7 @@ public class SelectProfilePictureView {
     @FXML
     protected void selectPicture(MouseEvent event) {
         ImageView source = (ImageView) event.getSource();
-        selection = String.format("assets/%s.png", source.getId());
+        selection = String.format("%s.png", source.getId());
         selectIndicator.setText(selection + " selected.");
         selectIndicator.setTextFill(Color.GREEN);
     }
