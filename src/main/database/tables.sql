@@ -10,7 +10,7 @@ create table user(
     password varchar(255),
     loginDate date,
     winPc float
-;
+);
 create table leaderBoard(
     PlayerRank INT,
     userName varchar(255),
