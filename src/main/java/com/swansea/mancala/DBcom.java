@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 public class DBcom {
-    public static void createUser(User user) throws SQLException{
-        Connection connection = Database.dbConnection();
+    private final Connection connection;
+
+    public DBcom(String URL, String username, String password) throws SQLException {
+        connection = DriverManager.getConnection(URL,username,password);
+    }
+
+    public void createUser(User user) throws SQLException{
         String query = Query.insert;
         PreparedStatement pst = connection.prepareStatement(query);
         pst.setString(1,user.getFirstName());
@@ -19,25 +24,44 @@ public class DBcom {
         pst.setDate(7,java.sql.Date.valueOf(loginDate));
         pst.setFloat(8,user.getWinPc());
 
-        System.out.println("\n ps = "+pst+"\n"+user);
-        pst.executeUpdate();
+        System.out.println("\nps = "+pst);
+        System.out.println(user);
+        pst.executeUpdate();  // todo: check user exists before updating table
         pst.close();
     }
-    public static void createLeaderBoard() throws SQLException{
-        Connection connection = Database.dbConnection();
+    public void createLeaderBoard() throws SQLException{
         String query = Query.leaderBoard1;
         PreparedStatement pst = connection.prepareStatement(query);
         pst.executeUpdate();
     }
-    public static void removeDuplicate() throws SQLException{
-        Connection connection = Database.dbConnection();
+
+    public boolean validateLogin(String username, String password) throws SQLException {
+        String query = Query.validateLogin;
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, username);
+        pst.setString(2, password);
+        ResultSet resultSet = pst.executeQuery();
+
+        String queryUsername;
+        String queryPassword;
+        while (resultSet.next()) {
+            queryUsername = resultSet.getString("userName");
+            queryPassword = resultSet.getString("password");
+            if (username.equals(queryUsername) && password.equals(queryPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeDuplicate() throws SQLException{
         String query = Query.removeDuplicate;
         PreparedStatement pst = connection.prepareStatement(query);
         pst.executeUpdate();
     }
-    public static ArrayList<User> displayUser() throws SQLException {
-        ArrayList<User> list = new ArrayList<User>();
-        Connection connection = Database.dbConnection();
+
+    public ArrayList<User> displayUser() throws SQLException {
+        ArrayList<User> list = new ArrayList<>();
         String query = Query.read;
         Statement st = connection.createStatement();
         System.out.println("\n st = "+st);
@@ -57,8 +81,8 @@ public class DBcom {
         st.close();
         return list;
     }
-    public static void displayLeaderBoard() throws SQLException {
-        Connection connection = Database.dbConnection();
+
+    public void displayLeaderBoard() throws SQLException {
         String query = Query.displayLeaderboard;
         PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();

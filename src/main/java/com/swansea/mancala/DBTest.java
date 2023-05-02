@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class DBTest {
     public static void main(String[] args) throws SQLException {
         User user;
+        DBcom database = new DBcom("jdbc:mysql://localhost:3306/User", "root", "pass");
         while(true){
             System.out.println("Choose '1' for CREATE A NEW USER and '2' for SEE THE EXISTING USER and 3 for LEADERBOARD");
             Scanner sc = new Scanner(System.in);
@@ -25,16 +26,16 @@ public class DBTest {
                 System.out.println("Create your password");
                 String password = sc.next();
                 user = new User(firstName,lastName,noOfGamesPlayed,noOfGamesWon,userName,password);
-                DBcom.createUser(user);
+                database.createUser(user);
             }
             else if (value == 2) {
-                ArrayList<User> allUser = DBcom.displayUser();
+                ArrayList<User> allUser = database.displayUser();
                 for(User u : allUser){
                     System.out.println(u.toString());
                 }
             } else if (value == 3) {
-                DBcom.createLeaderBoard();
-                DBcom.displayLeaderBoard();
+                database.createLeaderBoard();
+                database.displayLeaderBoard();
             } else {
                 break;
             }

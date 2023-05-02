@@ -8,6 +8,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * Class for handling logic allowing users to log in and register new accounts.
@@ -35,7 +38,7 @@ public class LoginView {
      * @param e the event which called this method
      */
     @FXML
-    protected void loginButtonAction(ActionEvent e) {
+    protected void loginButtonAction(ActionEvent e) throws SQLException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -77,9 +80,9 @@ public class LoginView {
      * @param password Provided password
      * @return True if credentials are valid, otherwise false
      */
-    private boolean validateLoginCredentials(String username, String password) {
-        // todo: write an algorithm for validating the given credentials
-        return username.equals("user") && password.equals("pass");
+    private boolean validateLoginCredentials(String username, String password) throws SQLException {
+        DBcom connection = new DBcom("jdbc:mysql://localhost:3306/User", "root", "pass");
+        return connection.validateLogin(username, password);
     }
 
 

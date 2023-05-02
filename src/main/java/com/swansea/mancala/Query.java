@@ -21,4 +21,6 @@ public class Query {
                 GROUP BY userName, winPc)
             ORDER BY winPc DESC;
             """;
+    static String validateLogin = "SELECT userName, password FROM User WHERE userName = ? AND password = ?";
+    static String testLogin = "SELECT userName, password FROM User WHERE userName = `fr` AND password = `1`";
 }
