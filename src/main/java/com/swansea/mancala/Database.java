@@ -9,7 +9,7 @@ public class Database {
         try{
             String url = "jdbc:mysql://localhost:3306/User";
             String username = "root";
-            String pass = "Swapnil@123";
+            String pass = "";  // replace as appropriate
             connect = DriverManager.getConnection(url,username,pass);
         }
         catch(Exception e){
