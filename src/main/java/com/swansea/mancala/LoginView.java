@@ -8,6 +8,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 /**
@@ -123,7 +126,14 @@ public class LoginView {
             errorMessage.setText("Username is taken.");
             return;
         }
-        User user = new User(firstName, lastName, username, password);
+        String hash;
+        try {
+            hash = toSha256(password);
+        } catch (NoSuchAlgorithmException e) {
+            errorMessage.setText("An unexpected error occurred.");
+            return;
+        }
+        User user = new User(firstName, lastName, username, hash);
         databaseConnector.createUser(user);
         AlertFactory.createAlert(
                 Alert.AlertType.INFORMATION,
@@ -142,6 +152,33 @@ public class LoginView {
      */
     private boolean validateLoginCredentials(String username, String password) throws SQLException {
         DatabaseConnector connection = DatabaseConnector.create();
-        return connection.validateLogin(username, password);
+        String hash;
+        try {
+            hash = toSha256(password);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return connection.validateLogin(username, hash);
+    }
+
+    /**
+     * Takes a string input and return its SHA-256 hash. Serves as a rudimentary password encryption.
+     * @param input a string to hash
+     * @return the SHA-256 hash output string.
+     */
+    private String toSha256(String input) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(input.getBytes(StandardCharsets.UTF_8));
+        StringBuilder out = new StringBuilder();
+        for (byte b : md.digest()) {
+            String hexString = Integer.toHexString(0xff & b);
+            if (hexString.length() == 1) {
+                out.append(hexString).append('0');
+            } else {
+                out.append(hexString);
+            }
+        }
+        return out.toString();
     }
 }

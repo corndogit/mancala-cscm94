@@ -2,7 +2,6 @@ package com.swansea.mancala;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +22,6 @@ public class ProfileView {
     @FXML
     protected Label playerUsername;
     @FXML
-    protected Label dateJoined;
-    @FXML
     protected Label dateLastLogin;
     @FXML
     protected Label gamesPlayed;
@@ -32,10 +29,21 @@ public class ProfileView {
     protected Label winRate;
 
     public void initialize() {
-        // todo: implement when database is ready
-        // make DB connection
-        // run query to retrieve profile
-        // assign results of query to relevant variables
+        openProfile(MainView.loggedInUser);  // todo: may break viewing other profiles in the future
+    }
+
+    /**
+     * Opens the profile of the provided User.
+     * @param user the user to view
+     */
+    public void openProfile(User user) {
+        playerFullName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
+//        profilePicture.setImage(new Image());  // todo: update schema to include profile picture
+        playerUsername.setText(user.getUserName());
+        dateLastLogin.setText("Date last logged in: " + user.getLoginDate().toString());
+        gamesPlayed.setText("Games played: " + user.getNoOfGamesPlayed());
+        winRate.setText(String.format("Win percentage: %.2f%%", user.getWinPc()));
+        System.out.println(user.getWinPc());
     }
 
     /**

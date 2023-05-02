@@ -33,11 +33,6 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dateJoined" text="Date joined: ">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="dateLastLogin" text="Date last logged in:">
                      <font>
                         <Font size="14.0" />

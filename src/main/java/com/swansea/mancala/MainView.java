@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainView {
-    static User loggedInUser;
+    public static User loggedInUser;
     @FXML
     protected VBox mainWindow;
 

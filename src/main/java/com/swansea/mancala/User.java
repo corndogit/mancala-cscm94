@@ -76,6 +76,9 @@ public class User {
         return loginDate.toLocalDate();
     }
     public float getWinPc(){
+        if (noOfGamesPlayed < 1) {
+            return 0;
+        }
         winPc = ((float)noOfGamesWon/(float)noOfGamesPlayed)*100;
         return winPc;
     }
