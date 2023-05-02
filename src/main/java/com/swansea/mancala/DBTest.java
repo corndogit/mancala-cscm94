@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class DBTest {
     public static void main(String[] args) throws SQLException {
         User user;
-        DBcom database = new DBcom("jdbc:mysql://localhost:3306/User", "root", "pass");
+        DatabaseConnector database = new DatabaseConnector("jdbc:mysql://localhost:3306/User", "root", "pass");
         while(true){
             System.out.println("Choose '1' for CREATE A NEW USER and '2' for SEE THE EXISTING USER and 3 for LEADERBOARD");
             Scanner sc = new Scanner(System.in);

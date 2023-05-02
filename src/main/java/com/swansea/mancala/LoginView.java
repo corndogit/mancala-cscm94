@@ -8,8 +8,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -81,7 +79,7 @@ public class LoginView {
      * @return True if credentials are valid, otherwise false
      */
     private boolean validateLoginCredentials(String username, String password) throws SQLException {
-        DBcom connection = new DBcom("jdbc:mysql://localhost:3306/User", "root", "pass");
+        DatabaseConnector connection = new DatabaseConnector("jdbc:mysql://localhost:3306/User", "root", "pass");
         return connection.validateLogin(username, password);
     }
 

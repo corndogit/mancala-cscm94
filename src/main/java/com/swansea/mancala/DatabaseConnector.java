@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-public class DBcom {
+public class DatabaseConnector {
     private final Connection connection;
 
-    public DBcom(String URL, String username, String password) throws SQLException {
+    public DatabaseConnector(String URL, String username, String password) throws SQLException {
         connection = DriverManager.getConnection(URL,username,password);
     }
 
