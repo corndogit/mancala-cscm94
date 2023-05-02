@@ -88,20 +88,37 @@ public class DatabaseConnector {
         pst.executeUpdate();
     }
 
-    public ArrayList<User> displayUser() throws SQLException {
-        ArrayList<User> list = new ArrayList<>();
-        String query = Query.read;
-        Statement st = connection.createStatement();
-        System.out.println("\n st = "+st);
-        ResultSet resultSet = st.executeQuery(query);
-        while(resultSet.next()){
+    public User getUserByUsername(String username) throws SQLException {
+        String query = Query.getUser;
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, username);
+        ResultSet resultSet = pst.executeQuery();
+        if (resultSet.next()) {
             String firstName = resultSet.getString("firstName");
             String lastName = resultSet.getString("lastName");
             int gamesPlayed = resultSet.getInt("gamesPlayed");
             int gamesWon = resultSet.getInt("gamesWon");
-            String username = resultSet.getString("userName");
-            LocalDate loginDate = LocalDate.now();
-            User user = new User(firstName,lastName,gamesPlayed,gamesWon,username,loginDate);
+            String userName = resultSet.getString("userName");
+            LocalDate loginDate = resultSet.getDate("loginDate").toLocalDate();
+            return new User(firstName,lastName,gamesPlayed,gamesWon,userName,loginDate);
+        }
+        throw new SQLException("No user found with username '%s'", username);
+    }
+
+    public ArrayList<User> displayUser() throws SQLException {
+        ArrayList<User> list = new ArrayList<>();
+        String query = Query.getUser;
+        Statement st = connection.createStatement();
+        System.out.println("\n st = "+st);
+        ResultSet resultSet = st.executeQuery(query);
+        while(resultSet.next()){
+            User user = new User(
+                    resultSet.getString("firstName"),
+                    resultSet.getString("lastName"),
+                    resultSet.getInt("gamesPlayed"),
+                    resultSet.getInt("gamesWon"),
+                    resultSet.getString("userName"),
+                    LocalDate.now());
             list.add(user);
         }
         st.close();

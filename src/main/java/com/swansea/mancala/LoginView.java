@@ -46,8 +46,14 @@ public class LoginView {
 
         boolean isValid = validateLoginCredentials(username, password);
         if (isValid) {
-            MainView.loginSuccess = true;
-            ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();
+            DatabaseConnector db = DatabaseConnector.create();
+            try {
+                MainView.loggedInUser = db.getUserByUsername(username);
+                MainView.loginSuccess = true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getSQLState());
+            }
+            ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();  // close window
         } else {
             errorMessage.setText(String.format(ERROR_MESSAGE, "username or password"));
         }
@@ -119,7 +125,7 @@ public class LoginView {
             return;
         }
         User user = new User(firstName, lastName, username, password);
-        databaseConnector.createUser(user);  // TODO: fix SQLSyntaxErrorException: Unknown column 'NaN' in 'field list'
+        databaseConnector.createUser(user);
         AlertFactory.createAlert(
                 Alert.AlertType.INFORMATION,
                 "Success!",
