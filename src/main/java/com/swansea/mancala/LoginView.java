@@ -17,9 +17,13 @@ import java.sql.SQLException;
 public class LoginView {
     public static final int LOGIN_WINDOW_WIDTH = 400;
     public static final int LOGIN_WINDOW_HEIGHT = 300;
-
+    private final String ERROR_MESSAGE = "Invalid %s.";
     @FXML
-    protected PasswordField ConfirmPasswordField;
+    protected TextField firstNameField;
+    @FXML
+    protected TextField lastNameField;
+    @FXML
+    protected PasswordField confirmPasswordField;
     @FXML
     protected TextField usernameField;
     @FXML
@@ -45,7 +49,7 @@ public class LoginView {
             MainView.loginSuccess = true;
             ((Stage) (((Button) e.getSource()).getScene().getWindow())).close();
         } else {
-            errorMessage.setText("Invalid username or password");
+            errorMessage.setText(String.format(ERROR_MESSAGE, "username or password"));
         }
     }
 
@@ -72,6 +76,59 @@ public class LoginView {
         stage.show();
     }
 
+    @FXML
+    protected void registerNewUserButtonAction() throws SQLException {
+        // validation
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(username);
+        System.out.println(password);
+
+        if ("".equals(firstName)) {
+            errorMessage.setText(String.format(ERROR_MESSAGE, "first name"));
+            return;
+        }
+        System.out.println();
+        if ("".equals(lastName)) {
+            errorMessage.setText(String.format(ERROR_MESSAGE, "last name"));
+            return;
+        }
+        if ("".equals(username)) {
+            errorMessage.setText(String.format(ERROR_MESSAGE, "username"));
+            return;
+        }
+        if ("".equals(password) || "".equals(confirmPassword)) {
+            errorMessage.setText(String.format(ERROR_MESSAGE, "password"));
+            return;
+        }
+        if (!password.equals(confirmPassword)) {
+            errorMessage.setText("Passwords do not match.");
+            return;
+        }
+
+        // connect to database
+        DatabaseConnector databaseConnector = DatabaseConnector.create();
+        if (databaseConnector.userExistsInDatabase(username)) {
+            errorMessage.setText("Username is taken.");
+            return;
+        }
+        User user = new User(firstName, lastName, username, password);
+        databaseConnector.createUser(user);  // TODO: fix SQLSyntaxErrorException: Unknown column 'NaN' in 'field list'
+        AlertFactory.createAlert(
+                Alert.AlertType.INFORMATION,
+                "Success!",
+                "Account registered",
+                "Please try logging in with your new account details."
+        ).showAndWait();
+        errorMessage.setText("");
+    }
+
     /**
      * Validates the provided credentials against values stored in the database.
      * @param username Provided username
@@ -79,9 +136,7 @@ public class LoginView {
      * @return True if credentials are valid, otherwise false
      */
     private boolean validateLoginCredentials(String username, String password) throws SQLException {
-        DatabaseConnector connection = new DatabaseConnector("jdbc:mysql://localhost:3306/User", "root", "pass");
+        DatabaseConnector connection = DatabaseConnector.create();
         return connection.validateLogin(username, password);
     }
-
-
 }

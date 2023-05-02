@@ -10,4 +10,9 @@ public enum DBLogin {
     DBLogin(String label) {
         this.label = label;
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

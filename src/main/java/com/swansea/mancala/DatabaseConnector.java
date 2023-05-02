@@ -11,18 +11,30 @@ public class DatabaseConnector {
         connection = DriverManager.getConnection(URL,username,password);
     }
 
+    /**
+     * Factory method for creating a new database using the values stored in the DBLogin enum.
+     * @return DatabaseConnection associated with the database
+     * @throws SQLException if database is not reachable
+     */
+    public static DatabaseConnector create() throws SQLException {
+        return new DatabaseConnector(
+                DBLogin.URL.toString(),
+                DBLogin.USERNAME.toString(),
+                DBLogin.PASSWORD.toString()
+        );
+    }
+
     public void createUser(User user) throws SQLException{
         String query = Query.insert;
         PreparedStatement pst = connection.prepareStatement(query);
-        pst.setString(1,user.getFirstName());
-        pst.setString(2,user.getLastName());
-        pst.setInt(3,user.getNoOfGamesPlayed());
-        pst.setInt(4,user.getNoOfGamesWon());
-        pst.setString(5,user.getUserName());
-        pst.setString(6,user.getPassword());
-        LocalDate loginDate = user.getLoginDate();
-        pst.setDate(7,java.sql.Date.valueOf(loginDate));
-        pst.setFloat(8,user.getWinPc());
+        pst.setString(1, user.getFirstName());
+        pst.setString(2, user.getLastName());
+        pst.setInt(3, 0);
+        pst.setInt(4, 0);
+        pst.setString(5, user.getUserName());
+        pst.setString(6, user.getPassword());
+        pst.setDate(7, java.sql.Date.valueOf(LocalDate.now()));
+        pst.setFloat(8, 0);
 
         System.out.println("\nps = "+pst);
         System.out.println(user);
@@ -54,6 +66,22 @@ public class DatabaseConnector {
         return false;
     }
 
+    public boolean userExistsInDatabase(String username) throws SQLException {
+        String query = Query.usernameExists;
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setString(1, username);
+        ResultSet resultSet = pst.executeQuery();
+
+        String queryUsername;
+        while (resultSet.next()) {
+            queryUsername = resultSet.getString("userName");
+            if (username.equals(queryUsername)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void removeDuplicate() throws SQLException{
         String query = Query.removeDuplicate;
         PreparedStatement pst = connection.prepareStatement(query);
@@ -72,9 +100,7 @@ public class DatabaseConnector {
             int gamesPlayed = resultSet.getInt("gamesPlayed");
             int gamesWon = resultSet.getInt("gamesWon");
             String username = resultSet.getString("userName");
-            User user1 = new User();
-            LocalDate loginDate = user1.getLoginDate();
-            loginDate = Date.valueOf(loginDate).toLocalDate();
+            LocalDate loginDate = LocalDate.now();
             User user = new User(firstName,lastName,gamesPlayed,gamesWon,username,loginDate);
             list.add(user);
         }

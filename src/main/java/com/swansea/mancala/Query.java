@@ -22,5 +22,5 @@ public class Query {
             ORDER BY winPc DESC;
             """;
     static String validateLogin = "SELECT userName, password FROM User WHERE userName = ? AND password = ?";
-    static String testLogin = "SELECT userName, password FROM User WHERE userName = `fr` AND password = `1`";
+    static String usernameExists = "SELECT userName FROM User WHERE userName = ?";
 }
