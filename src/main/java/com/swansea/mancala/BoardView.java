@@ -4,14 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
 import java.net.URL;
 import java.util.Arrays;
 
+import javafx.scene.control.Alert.AlertType;
+
 /**
- * Provides functionality for the Board class.
+ * Provides functionality for the Board component of the game, and provides methods for moving the pieces around the
+ * board, selecting the next player's turn and determining the win state.
  * @author Nathan Brenton
  */
 public class BoardView {
@@ -35,7 +40,11 @@ public class BoardView {
     private final int[][] holes = new int[2][6];
     private final int[] stores = new int[2];
     private boolean isFinished = false;
+    private GameView gameController;
 
+    /**
+     * Sets up the game once a Game is instantiated
+     */
     public void initialize() {
         final int INITIAL_VALUE = 4;
         for (int i = 0; i < holes.length; i++) {
@@ -45,16 +54,6 @@ public class BoardView {
         }
         // playerTurn = players[Math.abs(random.nextInt()) % 2];  // randomly chooses a player (not implemented)
         updateView();
-    }
-
-    /**
-     * Gets a hole value
-     * @param row row index
-     * @param col column index
-     * @return value stored at board position [row][col]
-     */
-    private int getHoleValue(int row, int col) {
-        return holes[row][col];
     }
 
     /**
@@ -71,7 +70,7 @@ public class BoardView {
         for (Node hole: stones.getChildren()) {
             int row = GridPane.getRowIndex(hole);
             int col = GridPane.getColumnIndex(hole);
-            Image stoneImage = loadStoneImage(getHoleValue(row, col));
+            Image stoneImage = loadStoneImage(holes[row][col]);
             ((ImageView) hole).setImage(stoneImage);
         }
     }
@@ -108,7 +107,7 @@ public class BoardView {
         if (origin.getParent() instanceof GridPane) {  // hovered image is a hole
             int row = GridPane.getRowIndex(origin);
             int col = GridPane.getColumnIndex(origin);
-            hoverText.setText(String.format(textPattern, getHoleValue(row, col)));
+            hoverText.setText(String.format(textPattern, holes[row][col]));
         } else {  // hovered image is a store
             int value;
             if (origin.getId().equals("p1StoreView")) {
@@ -206,10 +205,13 @@ public class BoardView {
                 playerTurnLabel.setText(winner + " wins!");
             }
             isFinished = true;
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Winner!");
-            alert.setHeaderText(winner + " wins the game!");
-            alert.setContentText("Click exit to return to the main menu.");
+            gameController.storeResultInDB(players, stores);
+            Alert alert = AlertFactory.createAlert(
+                    AlertType.INFORMATION,
+                    "Winner!",
+                    String.format("%s wins the game!", winner),
+                    "Click exit to return to the main menu."
+            );
             alert.showAndWait();
             return;
         }
@@ -226,8 +228,8 @@ public class BoardView {
     }
 
     /**
-     * Checks if either of the sides of the board are empty, giving the remaining pieces to whichever player made
-     * the last move.
+     * Checks if either of the sides of the board are empty, giving the remaining pieces to whichever player still
+     * has stones on their side of the board.
      * @return the name of the player with no stones left
      */
     private String checkForWin() {
@@ -236,9 +238,9 @@ public class BoardView {
 
         if (topRowSum == 0 || bottomRowSum == 0) {
             if (topRowSum == 0) {
-                stores[0] += bottomRowSum;
+                stores[1] += bottomRowSum;
             } else {
-                stores[1] += topRowSum;
+                stores[0] += topRowSum;
             }
 
             updateView();
@@ -251,5 +253,9 @@ public class BoardView {
             return "tie";
         }
         return null;
+    }
+
+    public void setGameController(GameView gameController) {
+        this.gameController = gameController;
     }
 }

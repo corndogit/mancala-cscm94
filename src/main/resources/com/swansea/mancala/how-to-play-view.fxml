@@ -2,18 +2,24 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuView">
+<ScrollPane hbarPolicy="NEVER" prefHeight="600.0" stylesheets="@stylesheets/how-to-play-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.MainMenuView">
    <content>
-      <VBox id="how-to-play" prefWidth="400.0" stylesheets="@stylesheets/how-to-play-view.css">
+      <VBox id="how-to-play" prefWidth="500.0">
          <children>
-            <Label styleClass="how-to-play-title" text="How To Play" />
+            <Label alignment="TOP_CENTER" styleClass="how-to-play-title" text="How To Play" />
             <Label styleClass="how-to-play-subtitle" text="Introduction" />
             <Label styleClass="how-to-play-paragraph" text="Mancala is a traditional board game that is played with small stones and a board with a series of pits arranged in rows. The objective of the game is to collect the most stones in your &quot;store&quot; or &quot;mancala&quot; at the end of the game." wrapText="true">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin></Label>
+            <ImageView fitHeight="360.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <image>
+                  <Image url="@assets/how-to-play/layout.png" />
+               </image>
+            </ImageView>
             <Label styleClass="how-to-play-subtitle" text="Layout" />
             <Label styleClass="how-to-play-paragraph" text="Mancala board - The Mancala board is a rectangular playing board with two rows of six small pits, and two larger pits at each end called &quot;stores&quot;.&#10;&#10;Stones - there are 48 small stones, which are divided equally into 6 pits on each player's side of the board." wrapText="true">
                <VBox.margin>
@@ -24,6 +30,11 @@
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin></Label>
+            <ImageView fitHeight="360.0" fitWidth="450.0" layoutX="30.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/how-to-play/win.png" />
+               </image>
+            </ImageView>
             <Label styleClass="how-to-play-subtitle" text="Conclusion" />
             <Label styleClass="how-to-play-paragraph" text="Mancala is a game of strategy and skill, it is easy to learn and hard to master. Have fun playing Mancala!" wrapText="true">
                <VBox.margin>

@@ -51,7 +51,6 @@ public class LoginView {
     /**
      * Changes the login window between the login and register views.
      * @param e the event which called this method
-     * @throws IOException if an IO error occurs
      */
     @FXML
     protected void changeViewButtonAction(ActionEvent e) throws IOException {

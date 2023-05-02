@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="root" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.SelectProfilePictureView">
+<VBox fx:id="root" alignment="CENTER" spacing="20.0" stylesheets="@stylesheets/menu-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.SelectProfilePictureView">
    <children>
       <GridPane gridLinesVisible="true">
         <columnConstraints>
@@ -57,6 +57,7 @@
                </image></ImageView>
          </children>
       </GridPane>
+      <Label fx:id="selectIndicator" text="No picture selected" />
       <Button mnemonicParsing="false" onMouseClicked="#confirmSelection" text="Confirm" />
    </children>
    <padding>
