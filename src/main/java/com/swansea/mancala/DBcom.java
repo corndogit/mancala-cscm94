@@ -1,6 +1,9 @@
+package com.swansea.mancala;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
+
 public class DBcom {
     public static void createUser(User user) throws SQLException{
         Connection connection = Database.dbConnection();

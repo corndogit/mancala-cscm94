@@ -1,4 +1,7 @@
+package com.swansea.mancala;
+
 import java.time.LocalDate;
+
 public class User {
     private String firstName;
     private String lastName;

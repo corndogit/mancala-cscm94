@@ -1,5 +1,8 @@
+package com.swansea.mancala;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+
 public class Database {
     static Connection connect = null;
     public static Connection dbConnection(){

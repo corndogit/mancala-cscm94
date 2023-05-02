@@ -1,7 +1,10 @@
+package com.swansea.mancala;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Main {
+
+public class DBTest {
     public static void main(String[] args) throws SQLException {
         User user;
         while(true){
