@@ -1,6 +1,6 @@
-create database Mancala;
+# create database Mancala;
 use Mancala;
-create table user(
+create table User(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     firstName char(255) NOT NULL,
     lastName char(255) NOT NULL,
@@ -12,8 +12,8 @@ create table user(
     gamesWon int DEFAULT 0,
     winPc float DEFAULT 0.0
 );
-create table leaderBoard(
-    PlayerRank INT,
+create table Leaderboard(
+    playerRank int,
     userName varchar(255),
     winPc float
 );
