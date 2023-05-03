@@ -6,7 +6,7 @@ create table User(
     lastName char(255) NOT NULL,
     userName varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
-    profilePicture varchar(255),
+    profilePicture varchar(255) DEFAULT ('default.png'),
     loginDate date DEFAULT (CURRENT_DATE),
     gamesPlayed int DEFAULT 0,
     gamesWon int DEFAULT 0,
