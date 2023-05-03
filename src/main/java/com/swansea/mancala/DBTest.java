@@ -29,7 +29,7 @@ public class DBTest {
                 }
             } else if (value == 3) {
                 database.createLeaderBoard();
-                database.displayLeaderBoard();
+                database.displayLeaderBoardForTest();
             } else {
                 break;
             }
