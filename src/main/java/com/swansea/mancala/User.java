@@ -33,6 +33,10 @@ public class User {
         this.loginDate = Date.valueOf(loginDate);
     }
 
+    public User(String username) {
+        this.userName = username;
+    }
+
     /**
      * Overridden constructor for creating a new user to register in the database
      * @param firstName the user's first name

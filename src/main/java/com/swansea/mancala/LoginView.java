@@ -52,6 +52,7 @@ public class LoginView {
             DatabaseConnector db = DatabaseConnector.create();
             try {
                 MainView.loggedInUser = db.getUserByUsername(username);
+                db.updateLoginDate(username);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }

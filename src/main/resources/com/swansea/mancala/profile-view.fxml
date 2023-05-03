@@ -48,6 +48,11 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#refreshProfileButton" text="Refresh" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>

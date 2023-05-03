@@ -105,6 +105,14 @@ public class DatabaseConnector {
         pst.executeUpdate();
     }
 
+    public void updateLoginDate(String username) throws  SQLException {
+        String query = "UPDATE User SET loginDate = ? WHERE userName = ?";
+        PreparedStatement pst = connection.prepareStatement(query);
+        pst.setDate(1, Date.valueOf(LocalDate.now()));
+        pst.setString(2, username);
+        pst.executeUpdate();
+    }
+
     /**
      * Increments the provided user's games played and games won.
      * @param username username of the user to update
@@ -128,7 +136,7 @@ public class DatabaseConnector {
     public void updateUserGames(String username) throws SQLException{
         String query = """
                         UPDATE User
-                        SET gamesPlayed = gamesPlayed + 1, gamesWon = gamesWon + 1
+                        SET gamesPlayed = gamesPlayed + 1
                         WHERE userName = ?;
                         """;
         PreparedStatement pst = connection.prepareStatement(query);

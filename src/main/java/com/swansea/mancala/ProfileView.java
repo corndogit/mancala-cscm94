@@ -32,7 +32,10 @@ public class ProfileView {
     private User loadedUser;
 
     public void initialize() {
-        openProfile(MainView.loggedInUser);  // todo: may break viewing other profiles in the future
+        if (loadedUser == null) {
+            loadedUser = MainView.loggedInUser;
+        }
+        openProfile(loadedUser);  // todo: may break viewing other profiles in the future
     }
 
     /**
@@ -55,6 +58,14 @@ public class ProfileView {
         dateLastLogin.setText("Date last logged in: " + user.getLoginDate().toString());
         gamesPlayed.setText("Games played: " + user.getNoOfGamesPlayed());
         winRate.setText(String.format("Win percentage: %.2f%%", user.getWinPc()));
+    }
+
+    /**
+     * Refreshes the profile view by reloading the profile from database
+     */
+    @FXML
+    protected void refreshProfileButton() {
+        openProfile(loadedUser);
     }
 
     /**
