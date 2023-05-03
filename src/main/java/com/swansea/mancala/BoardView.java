@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 import javafx.scene.control.Alert.AlertType;
@@ -35,7 +36,7 @@ public class BoardView {
     @FXML
     protected Label hoverText;
 
-    private String[] players = new String[]{"P1", "P2"};  // todo: load names from profile in the future
+    private final String[] players = new String[]{MainView.loggedInUser.getUserName(), "P2"};
     private String playerTurn = players[0];
     private final int[][] holes = new int[2][6];
     private final int[] stores = new int[2];
@@ -204,6 +205,8 @@ public class BoardView {
             } else {
                 playerTurnLabel.setText(winner + " wins!");
             }
+
+            updateDatabase(winner);
             isFinished = true;
             gameController.storeResultInDB(players, stores);
             Alert alert = AlertFactory.createAlert(
@@ -225,6 +228,26 @@ public class BoardView {
         }
         playerTurn = players[0].equals(playerTurn) ? players[1] : players[0];  // switch players
         playerTurnLabel.setText(playerTurn + "'s turn");
+    }
+
+    private void updateDatabase(String usernameOfWinner) {
+        try {
+            DatabaseConnector db = DatabaseConnector.create();
+            if (players[0].equals(usernameOfWinner)) {
+                // increment wins and games
+                db.updateUserWins(players[0]);
+            } else {
+                // increment games only
+                db.updateUserGames(players[0]);
+            }
+        } catch (SQLException e) {
+            AlertFactory.createAlert(
+                    AlertType.ERROR,
+                    "Error",
+                    "Database error",
+                    "Sorry, your score could not be saved."
+            ).showAndWait();
+        }
     }
 
     /**
