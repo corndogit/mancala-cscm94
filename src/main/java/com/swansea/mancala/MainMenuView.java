@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Handles the logic behind the main menu view. Controls and handles actions made by interacting with the buttons
+ * on the menu.
+ * @author Nathan Brenton
+ */
 public class MainMenuView {
     @FXML
     protected Button profileButton;

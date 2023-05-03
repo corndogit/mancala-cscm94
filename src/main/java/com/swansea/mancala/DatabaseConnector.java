@@ -55,6 +55,9 @@ public class DatabaseConnector {
         pst.close();
     }
 
+    /**
+     *
+     */
     public void createLeaderBoard() throws SQLException{
         String query = """
                 INSERT IGNORE INTO Leaderboard (PlayerRank, userName, winPc)
@@ -208,7 +211,11 @@ public class DatabaseConnector {
         throw new SQLException("No user found with username '%s'", username);
     }
 
-    public ArrayList<User> displayAllUsers() throws SQLException {
+    /**
+     * Retrieve a list of all users in the user table.
+     * @return an ArrayList of Users
+     */
+    public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> list = new ArrayList<>();
         String query = "SELECT * FROM user";
         Statement st = connection.createStatement();
@@ -258,6 +265,9 @@ public class DatabaseConnector {
         return users;
     }
 
+    /**
+     * A method used by DBTest which prints all entries in the leaderboard table.
+     */
     public void displayLeaderBoardForTest() throws SQLException {
         String query = "SELECT PlayerRank, userName, winPc FROM leaderBoard ORDER BY winPc DESC";
         PreparedStatement stmt = connection.prepareStatement(query);

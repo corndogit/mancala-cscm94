@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Controller for handling logic behind the profile view. Can connect to the database to update
+ * displayed information and allows access to the view to update the user's profile picture.
+ * @author Nathan Brenton
+ */
 public class ProfileView {
     @FXML
     protected Label playerFullName;
@@ -31,6 +36,9 @@ public class ProfileView {
     protected Label winRate;
     private User loadedUser;
 
+    /**
+     * Called when this object is instantiated
+     */
     public void initialize() {
         if (loadedUser == null) {
             loadedUser = MainView.loggedInUser;

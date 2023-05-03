@@ -35,7 +35,6 @@ public class BoardView {
     @FXML
     protected Label hoverText;
 
-//    private final String[] players = new String[]{MainView.loggedInUser.getUserName(), "P2"};
     private final User[] players = new User[]{
             MainView.loggedInUser,
             new User("P2")
@@ -261,6 +260,10 @@ public class BoardView {
         return null;
     }
 
+    /**
+     * Setter for this board's parent game controller.
+     * @param gameController Controller of the game.
+     */
     public void setGameController(GameView gameController) {
         this.gameController = gameController;
     }

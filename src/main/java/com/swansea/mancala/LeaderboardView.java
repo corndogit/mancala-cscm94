@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Class for handling the display of leaderboard information. Handles data processing which is displayed
+ * using the leaderboard view.
+ * @author Nathan Brenton
+ */
 public class LeaderboardView {
     @FXML
     protected TableView<User> table = new TableView<>();
@@ -23,6 +28,9 @@ public class LeaderboardView {
     @FXML
     protected TableColumn<User, String> winPercentage;
 
+    /**
+     * Called when this object is instantiated.
+     */
     public void initialize() {
         // set columns
         userRank.setCellValueFactory(data ->
@@ -50,6 +58,11 @@ public class LeaderboardView {
         table.setItems(FXCollections.observableArrayList(users));
     }
 
+    /**
+     * Convert a float value to a formatted percentage
+     * @param value a float
+     * @return "[value]%" rounded to 2 decimal places
+     */
     private String floatToPercentage(float value) {
         DecimalFormat df = new DecimalFormat("###.##");
         return df.format(value) + "%";

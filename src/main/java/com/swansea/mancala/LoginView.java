@@ -85,6 +85,10 @@ public class LoginView {
         stage.show();
     }
 
+    /**
+     * Registers a new user using the provided text inputs. Also handles validation such as empty text fields
+     * or the username existing in the database.
+     */
     @FXML
     protected void registerNewUserButtonAction() throws SQLException {
         // validation

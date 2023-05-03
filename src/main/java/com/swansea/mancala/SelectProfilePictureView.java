@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ * Controls logic behind the view for the profile picture selection window.
+ * @author Nathan Brenton
+ */
 public class SelectProfilePictureView {
     @FXML
     protected Label selectIndicator;

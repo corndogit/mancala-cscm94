@@ -9,14 +9,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller for the main view that is displayed when Mancala is opened.
+ * @author Nathan Brenton
+ */
 public class MainView {
     public static User loggedInUser;
     @FXML
     protected VBox mainWindow;
 
     /**
-     * Opens the login screen in a new window.
-     * @throws IOException if an IO error occurs
+     * Opens the login screen in a new window. On successful login, the main menu is entered.
      */
     @FXML
     protected void onLoginButtonClick() throws IOException {
@@ -36,6 +39,10 @@ public class MainView {
         }
     }
 
+    /**
+     * Changes the view to the main menu of Mancala
+     * @param mainWindow the Stage containing the main window
+     */
     public void enterMainMenu(Stage mainWindow) throws IOException {
         FXMLLoader mainMenuLoader = new FXMLLoader(MainView.class.getResource("main-menu-view.fxml"));
         Scene scene = new Scene(
