@@ -169,9 +169,9 @@ public class DatabaseConnector {
     @Deprecated
     public void removeDuplicate() throws SQLException{
         String query = """
-                DELETE FROM Leaderboard\s
-                WHERE PlayerRank NOT IN\s
-                   (SELECT MIN(PlayerRank)\s
+                DELETE FROM Leaderboard
+                WHERE PlayerRank NOT IN
+                   (SELECT MIN(PlayerRank)
                     FROM leaderBoard\s
                     GROUP BY userName, winPc)
                 ORDER BY winPc DESC;
@@ -210,9 +210,8 @@ public class DatabaseConnector {
 
     public ArrayList<User> displayAllUsers() throws SQLException {
         ArrayList<User> list = new ArrayList<>();
-        String query = "SELECT id, firstName, lastName, gamesPlayed, gamesWon, userName, loginDate, winPc FROM user";
+        String query = "SELECT * FROM user";
         Statement st = connection.createStatement();
-        System.out.println("\nst = "+st);
         ResultSet resultSet = st.executeQuery(query);
         while(resultSet.next()){
             User user = new User(
@@ -229,7 +228,37 @@ public class DatabaseConnector {
         return list;
     }
 
-    public void displayLeaderBoard() throws SQLException {
+    /**
+     * Get the leaderboard ordered by games played and win percentage.
+     * @return an ordered ArrayList of users
+     */
+    public ArrayList<User> getLeaderboard() throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String query = """
+                SELECT
+                    ROW_NUMBER() over (ORDER BY gamesPlayed DESC, (gamesWon/gamesPlayed) DESC) AS ranking,
+                    userName,
+                    gamesPlayed,
+                    gamesWon
+                FROM user
+                WHERE gamesPlayed > 0
+                ORDER BY gamesPlayed DESC, (gamesWon/gamesPlayed) DESC;
+                """;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        while(resultSet.next()){
+            User user = new User(
+                    resultSet.getInt("ranking"),
+                    resultSet.getString("userName"),
+                    resultSet.getInt("gamesPlayed"),
+                    resultSet.getInt("gamesWon")
+            );
+            users.add(user);
+        }
+        return users;
+    }
+
+    public void displayLeaderBoardForTest() throws SQLException {
         String query = "SELECT PlayerRank, userName, winPc FROM leaderBoard ORDER BY winPc DESC";
         PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();

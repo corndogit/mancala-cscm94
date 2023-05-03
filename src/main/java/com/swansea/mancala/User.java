@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class User {
+    private Integer rank = null;
     private String firstName;
     private String lastName;
     private int noOfGamesPlayed;
@@ -13,6 +14,7 @@ public class User {
     private String userName;
     private String password;
 
+    @Deprecated
     public User(String firstName, String lastName, int noOfGamesPlayed, int noOfGamesWon, String userName,String password){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,6 +24,17 @@ public class User {
         this.password = password;
     }
 
+
+    /**
+     * A User instance used for displaying the user's profile.
+     * @param firstName User's first name
+     * @param lastName User's last name
+     * @param noOfGamesPlayed Number of games played
+     * @param noOfGamesWon Number of games won
+     * @param userName User's username
+     * @param profilePicture User's profile picture path
+     * @param loginDate User's latest login date
+     */
     public User(String firstName, String lastName, int noOfGamesPlayed, int noOfGamesWon,
                 String userName, String profilePicture, LocalDate loginDate){
         this.firstName = firstName;
@@ -33,12 +46,30 @@ public class User {
         this.loginDate = Date.valueOf(loginDate);
     }
 
+    /**
+     * A basic user instance containing only a username. Used for the guest player in-game.
+     * @param username Name of the player
+     */
     public User(String username) {
         this.userName = username;
     }
 
+
     /**
-     * Overridden constructor for creating a new user to register in the database
+     * A basic user instance for loading leaderboard scores
+     * @param username User's username
+     * @param noOfGamesPlayed Number of games played
+     * @param noOfGamesWon Number of games won
+     */
+    public User(int rank, String username, int noOfGamesPlayed, int noOfGamesWon) {
+        this.rank = rank;
+        this.userName = username;
+        this.noOfGamesPlayed = noOfGamesPlayed;
+        this.noOfGamesWon = noOfGamesWon;
+    }
+
+    /**
+     * A new user to register in the database
      * @param firstName the user's first name
      * @param lastName the user's last name
      * @param userName the user's username
@@ -97,5 +128,9 @@ public class User {
 
     public void setProfilePicture(String filename) {
         this.profilePicture = filename;
+    }
+
+    public Integer getRank() {
+        return rank;
     }
 }
