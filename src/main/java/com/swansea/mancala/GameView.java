@@ -35,12 +35,12 @@ public class GameView {
     /**
      * Creates a new game instance and opens it in the current window.
      */
-    public void startGame(Stage stage) throws IOException {
+    public void startGame(Stage stage, int width, int height) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("game-view.fxml"));
         Scene scene = new Scene(
                 fxmlLoader.load(),
-                MainApplication.WINDOW_WIDTH,
-                MainApplication.WINDOW_HEIGHT
+                width,
+                height
         );
         stage.setScene(scene);
         stage.show();

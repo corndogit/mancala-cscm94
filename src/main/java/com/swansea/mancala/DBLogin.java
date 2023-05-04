@@ -1,7 +1,8 @@
 package com.swansea.mancala;
 
 /**
- * An enum for storing database login information.
+ * An enum for storing database login information for a MySQL database.
+ * Each item's value can be accessed by calling the toString method.
  * @author Swapnil Sarmah
  */
 public enum DBLogin {

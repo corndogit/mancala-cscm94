@@ -43,7 +43,7 @@ public class MainMenuView {
         switch (buttonSource.getId()){
             case "playGameButton" -> {
                 GameView game = new GameView();
-                game.startGame(window);
+                game.startGame(window, (int) window.getWidth(), (int) window.getHeight());
             }
             case "quitButton" -> quitApplication(window);
             case "howToPlayButton" -> showInNewWindow("How to play", "how-to-play-view.fxml");

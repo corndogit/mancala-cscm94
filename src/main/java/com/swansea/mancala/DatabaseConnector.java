@@ -4,11 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
+/**
+ * The DatabaseConnector class provides methods to create, read, update, and delete user data
+ * in a database.
+ * @author Swapnil Sarmah
+ */
 public class DatabaseConnector {
     private final Connection connection;
 
     /**
-     * Creates a DatabaseConnector and opens a connection with the provided credentials.
+     * Constructs a new DatabaseConnector and opens a connection with the provided credentials.
      * @param URL URL to the database
      * @param username Database username
      * @param password Database password
@@ -18,9 +23,9 @@ public class DatabaseConnector {
     }
 
     /**
-     * Factory method for creating a new database using the values stored in the DBLogin enum.
-     * @return DatabaseConnection associated with the database
-     * @throws SQLException if database is not reachable
+     * A static factory method for creating a new database using the values stored in the DBLogin enum.
+     * @return a Connection object that represents the connection to the database.
+     * @throws SQLException if a database access error occurs or the url is null.
      */
     public static DatabaseConnector create() throws SQLException {
         return new DatabaseConnector(
@@ -31,8 +36,10 @@ public class DatabaseConnector {
     }
 
     /**
-     * Persists a User object in database.
-     * @param user the user to store in the database 
+     *
+     * Inserts a new user into the database.
+     * @param user the user object to be inserted.
+     * @throws SQLException if a database access error occurs.
      */
     public void createUser(User user) throws SQLException{
         String query = """
@@ -56,8 +63,11 @@ public class DatabaseConnector {
     }
 
     /**
-     *
+     * Creates a leaderboard table in the database using user details.
+     * @throws SQLException if a database access error occurs.
+     * @deprecated Leaderboard table is likely to not exist in later versions.
      */
+    @Deprecated
     public void createLeaderBoard() throws SQLException{
         String query = """
                 INSERT IGNORE INTO Leaderboard (PlayerRank, userName, winPc)
@@ -187,6 +197,7 @@ public class DatabaseConnector {
      * Retrieves a user from the database.
      * @param username username of the user
      * @return User instance
+     * @throws SQLException if a database access error occurs.
      */
     public User getUserByUsername(String username) throws SQLException {
         String query = """
@@ -213,11 +224,12 @@ public class DatabaseConnector {
 
     /**
      * Retrieve a list of all users in the user table.
+     * @throws SQLException if a database access error occurs.
      * @return an ArrayList of Users
      */
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> list = new ArrayList<>();
-        String query = "SELECT * FROM user";
+        String query = "SELECT * FROM User";
         Statement st = connection.createStatement();
         ResultSet resultSet = st.executeQuery(query);
         while(resultSet.next()){
@@ -236,7 +248,8 @@ public class DatabaseConnector {
     }
 
     /**
-     * Get the leaderboard ordered by games played and win percentage.
+     * Get the leaderboard from the user table ordered by games played and win percentage.
+     * @throws SQLException if a database access error occurs.
      * @return an ordered ArrayList of users
      */
     public ArrayList<User> getLeaderboard() throws SQLException {
@@ -247,7 +260,7 @@ public class DatabaseConnector {
                     userName,
                     gamesPlayed,
                     gamesWon
-                FROM user
+                FROM User
                 WHERE gamesPlayed > 0
                 ORDER BY gamesPlayed DESC, (gamesWon/gamesPlayed) DESC;
                 """;
@@ -266,8 +279,11 @@ public class DatabaseConnector {
     }
 
     /**
-     * A method used by DBTest which prints all entries in the leaderboard table.
+     * Retrieves the leaderboard data from the database and displays it to the screen.
+     * @throws SQLException if a database access error occurs.
+     * @deprecated leaderboard table is no longer used, and likely to not exist
      */
+    @Deprecated
     public void displayLeaderBoardForTest() throws SQLException {
         String query = "SELECT PlayerRank, userName, winPc FROM leaderBoard ORDER BY winPc DESC";
         PreparedStatement stmt = connection.prepareStatement(query);

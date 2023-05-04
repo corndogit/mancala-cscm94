@@ -1,5 +1,6 @@
-# create database Mancala;
+create database if not exists Mancala;
 use Mancala;
+
 create table User(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     firstName char(255) NOT NULL,
@@ -9,11 +10,5 @@ create table User(
     profilePicture varchar(255) DEFAULT ('default.png'),
     loginDate date DEFAULT (CURRENT_DATE),
     gamesPlayed int DEFAULT 0,
-    gamesWon int DEFAULT 0,
-    winPc float DEFAULT 0.0
-);
-create table Leaderboard(
-    playerRank int,
-    userName varchar(255),
-    winPc float
+    gamesWon int DEFAULT 0
 );
