@@ -12,8 +12,8 @@ Mancala board game implemented in JavaFX as required for completion of the CSCM9
 - Resolve the Maven dependencies and build the project
 
 ## Video demonstration
-This is the video that was included with our submission.
-![video](https://corndog.galaxy.usbx.me/nextcloud/s/cagSQWKcsDma5p4/download/mancala_demo.mp4)
+This is the video that was included with our submission.  
+[Link to YouTube video](https://www.youtube.com/watch?v=YnlDI3YLzSY)
 
 ## License
 This project is currently closed source until marking and assessing is complete, but we would like to distribute it openly under the MIT license afterwards.
