@@ -35,8 +35,11 @@ public class BoardView {
     @FXML
     protected Label hoverText;
 
-    private String[] players = new String[]{"P1", "P2"};  // todo: load names from profile in the future
-    private String playerTurn = players[0];
+    private final User[] players = new User[]{
+            MainView.loggedInUser,
+            new User("P2")
+    };
+    private String playerTurn = players[0].getUserName();
     private final int[][] holes = new int[2][6];
     private final int[] stores = new int[2];
     private boolean isFinished = false;
@@ -52,7 +55,6 @@ public class BoardView {
                 holes[i][j] = INITIAL_VALUE;
             }
         }
-        // playerTurn = players[Math.abs(random.nextInt()) % 2];  // randomly chooses a player (not implemented)
         updateView();
     }
 
@@ -60,8 +62,8 @@ public class BoardView {
      * Refreshes the UI, updating the view of holes and stores
      */
     private void updateView() {
-        p1Score.setText(String.format("%s: %d", players[0], stores[0]));
-        p2Score.setText(String.format("%s: %d", players[1], stores[1]));
+        p1Score.setText(String.format("%s: %d", players[0].getUserName(), stores[0]));
+        p2Score.setText(String.format("%s: %d", players[1].getUserName(), stores[1]));
         if (!isFinished) {
             playerTurnLabel.setText(String.format("%s's turn", playerTurn));
         }
@@ -152,7 +154,8 @@ public class BoardView {
      */
     public void makeMove(int row, int col, String player) {
         // validate move
-        boolean correctRow = (players[0].equals(player) && row == 0) || (players[1].equals(player) && row == 1);
+        boolean correctRow = (players[0].getUserName().equals(player) && row == 0) ||
+                            (players[1].getUserName().equals(player) && row == 1);
         boolean holeIsNotEmpty = holes[row][col] > 0;
 
         if (!correctRow || !holeIsNotEmpty) {
@@ -170,7 +173,7 @@ public class BoardView {
             if (posY == 1) {  // bottom row
                 posX++;
                 if (posX >= holes[row].length) {
-                    if (players[1].equals(player)) {
+                    if (players[1].getUserName().equals(player)) {
                         stores[1]++;
                     } else {
                         posX = holes[row].length - 1;
@@ -183,7 +186,7 @@ public class BoardView {
             } else {  // top row
                 posX--;
                 if (posX < 0) {
-                    if (players[0].equals(player)) {
+                    if (players[0].getUserName().equals(player)) {
                         stores[0]++;
                     } else {
                         posX = 0;
@@ -204,8 +207,9 @@ public class BoardView {
             } else {
                 playerTurnLabel.setText(winner + " wins!");
             }
+
             isFinished = true;
-            gameController.storeResultInDB(players, stores);
+            gameController.storeResultInDB(players, winner);
             Alert alert = AlertFactory.createAlert(
                     AlertType.INFORMATION,
                     "Winner!",
@@ -217,13 +221,14 @@ public class BoardView {
         }
 
         // set next player's turn
-        boolean p1Bonus = (posX < 0) && players[0].equals(player);
-        boolean p2Bonus = (posX >= holes[posY].length) && players[1].equals(player);
+        boolean p1Bonus = (posX < 0) && players[0].getUserName().equals(player);
+        boolean p2Bonus = (posX >= holes[posY].length) && players[1].getUserName().equals(player);
         if (p1Bonus || p2Bonus) {  // repeat turn (do not swap)
             playerTurnLabel.setText(playerTurn + "'s bonus turn");
             return;
         }
-        playerTurn = players[0].equals(playerTurn) ? players[1] : players[0];  // switch players
+        // switch players
+        playerTurn = players[0].getUserName().equals(playerTurn) ? players[1].getUserName() : players[0].getUserName();
         playerTurnLabel.setText(playerTurn + "'s turn");
     }
 
@@ -246,15 +251,19 @@ public class BoardView {
             updateView();
 
             if (stores[0] > stores[1]) {
-                return players[0];
+                return players[0].getUserName();
             } else if (stores[1] > stores[0]) {
-                return players[1];
+                return players[1].getUserName();
             }
             return "tie";
         }
         return null;
     }
 
+    /**
+     * Setter for this board's parent game controller.
+     * @param gameController Controller of the game.
+     */
     public void setGameController(GameView gameController) {
         this.gameController = gameController;
     }

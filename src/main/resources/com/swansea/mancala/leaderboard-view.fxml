@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <StackPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.swansea.mancala.LeaderboardView">
    <children>
@@ -15,9 +18,10 @@
                </font></Label>
             <TableView fx:id="table">
                <columns>
-                  <TableColumn fx:id="userName" prefWidth="81.0" text="Username" />
-                  <TableColumn fx:id="gamesPlayed" minWidth="0.0" prefWidth="69.0" text="Games played" />
-                  <TableColumn fx:id="winPercentage" prefWidth="75.0" text="Win percentage" />
+                  <TableColumn fx:id="userRank" editable="false" prefWidth="47.0" sortable="false" text="Rank" />
+                  <TableColumn fx:id="userName" editable="false" prefWidth="157.0" sortable="false" text="Username" />
+                  <TableColumn fx:id="gamesPlayed" editable="false" minWidth="0.0" prefWidth="92.0" sortable="false" text="Games played" />
+                  <TableColumn fx:id="winPercentage" editable="false" prefWidth="102.0" sortable="false" text="Win percentage" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

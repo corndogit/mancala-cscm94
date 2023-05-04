@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 /**
@@ -34,20 +35,53 @@ public class GameView {
     /**
      * Creates a new game instance and opens it in the current window.
      */
-    public void startGame(Stage stage) throws IOException {
+    public void startGame(Stage stage, int width, int height) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GameView.class.getResource("game-view.fxml"));
         Scene scene = new Scene(
                 fxmlLoader.load(),
-                MainApplication.WINDOW_WIDTH,
-                MainApplication.WINDOW_HEIGHT
+                width,
+                height
         );
         stage.setScene(scene);
         stage.show();
     }
 
-    public void storeResultInDB(String[] players, int[] scores) {
+    public void storeResultInDB(User[] players, String usernameOfWinner) {
         System.out.println("Storing the results in database...");
-        // todo: add logic here when possible
+        String player1 = players[0].getUserName();
+        String player2 = players[1].getUserName();
+        boolean player2IsGuest = "P2".equals(player2);
+
+        try {
+            DatabaseConnector db = DatabaseConnector.create();
+            if (player1.equals(usernameOfWinner)) {
+                // p1 wins++ and games++, p2 games++
+                db.updateUserWins(player1);
+                if (!player2IsGuest) {
+                    db.updateUserGames(player2);
+                }
+            } else if ("tie".equals(usernameOfWinner)) {
+                // games++ only for both
+                db.updateUserGames(player1);
+                if (!player2IsGuest) {
+                    db.updateUserGames(player2);
+                }
+            } else {
+                // p2 wins++ and games++, p1 games++
+                db.updateUserGames(player1);
+                if (!player2IsGuest) {
+                    db.updateUserWins(player2);
+                }
+            }
+            MainView.loggedInUser = db.getUserByUsername(player1);
+        } catch (SQLException e) {
+            AlertFactory.createAlert(
+                    AlertType.ERROR,
+                    "Error",
+                    "Database error",
+                    "Sorry, your score could not be saved."
+            ).showAndWait();
+        }
     }
 
 

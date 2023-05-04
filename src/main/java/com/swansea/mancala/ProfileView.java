@@ -2,17 +2,23 @@ package com.swansea.mancala;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
+/**
+ * Controller for handling logic behind the profile view. Can connect to the database to update
+ * displayed information and allows access to the view to update the user's profile picture.
+ * @author Nathan Brenton
+ */
 public class ProfileView {
     @FXML
     protected Label playerFullName;
@@ -23,19 +29,51 @@ public class ProfileView {
     @FXML
     protected Label playerUsername;
     @FXML
-    protected Label dateJoined;
-    @FXML
     protected Label dateLastLogin;
     @FXML
     protected Label gamesPlayed;
     @FXML
     protected Label winRate;
+    private User loadedUser;
 
+    /**
+     * Called when this object is instantiated
+     */
     public void initialize() {
-        // todo: implement when database is ready
-        // make DB connection
-        // run query to retrieve profile
-        // assign results of query to relevant variables
+        if (loadedUser == null) {
+            loadedUser = MainView.loggedInUser;
+        }
+        openProfile(loadedUser);  // todo: may break viewing other profiles in the future
+    }
+
+    /**
+     * Opens the profile of the provided User.
+     * @param user the user to view
+     */
+    public void openProfile(User user) {
+        loadedUser = user;
+        playerFullName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
+        URL path = null;
+        if (user.getProfilePicture() != null) {
+            path = ProfileView.class.getResource("assets/profile_pictures/" + user.getProfilePicture());
+        }
+        if (path == null) {
+            path = ProfileView.class.getResource("assets/profile_pictures/default.png");
+        }
+        assert path != null;
+        profilePicture.setImage(new Image(path.toString()));
+        playerUsername.setText(user.getUserName());
+        dateLastLogin.setText("Date last logged in: " + user.getLoginDate().toString());
+        gamesPlayed.setText("Games played: " + user.getNoOfGamesPlayed());
+        winRate.setText(String.format("Win percentage: %.2f%%", user.getWinPc()));
+    }
+
+    /**
+     * Refreshes the profile view by reloading the profile from database
+     */
+    @FXML
+    protected void refreshProfileButton() {
+        openProfile(loadedUser);
     }
 
     /**
@@ -51,6 +89,7 @@ public class ProfileView {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+        openProfile(loadedUser);
     }
 
     /**
