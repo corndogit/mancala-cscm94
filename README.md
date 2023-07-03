@@ -16,4 +16,4 @@ This is the video that was included with our submission.
 [Link to YouTube video](https://www.youtube.com/watch?v=YnlDI3YLzSY)
 
 ## License
-This project is currently closed source until marking and assessing is complete, but we would like to distribute it openly under the MIT license afterwards.
+This project is distributed freely under the MIT license.
